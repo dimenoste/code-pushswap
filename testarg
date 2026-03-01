@@ -1,4 +1,4 @@
-./parser --simple 1 --medium 25 6 8 --benchmardzdzk // A retester
+./parser --simple 1 --medium 25 6 8 --benchmardzdzk //ok
  
  
  ./parser 2 3 2
