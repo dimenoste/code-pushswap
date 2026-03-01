@@ -28,7 +28,7 @@ recupere bien la liste, sors bien a l etat invalide, rest a faire une fonction p
 feb 15:
 
 Taches 
-1) -- TRANSFORMWR LES INVALQuand Invalid => print Error avec fonction write sur la sortie 2
+1) -- TRANSFORMWR LES INVAL Quand Invalid => print Error avec fonction write sur la sortie 2
 
 2) Finir le programme si :
 - pas d'argument
@@ -71,6 +71,9 @@ reflechir a l'implementation de radix
 Bien tester nos algos 
 lire ft_ouput de matan 
 Creation de plusieurs .h (a faire ensemble)
+
+Resoudre Bug : valgrind_lis
+void	add_operation(t_op_list *list, t_op_type op);
 
 Objectif mardi ;
 

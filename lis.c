@@ -5,6 +5,7 @@
 #include "push_swap.h"
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
 void	print_array(int *arr, int len)
 {
@@ -118,17 +119,18 @@ void	add_lis_to_nodes(t_stack *stk)
 
 	len_lis = 0;
 	i = 0;
-	if (!stk || stk->length < 2)
+	if (!stk || stk->length < 2 || !stk->head)
 		return ;
 	arr = copy_values(stk);
 	lis_subseq = lis(arr, stk->length, &len_lis);
 	ptr_node = stk->head;
-	if (!ptr_node)
-		return ;
 	while (i < stk->length)
 	{
 		ptr_node->is_lis = is_in_lis(ptr_node->value, lis_subseq, len_lis);
 		ptr_node = ptr_node->next;
 		i++;
 	}
+	free(lis_subseq);
+	free(arr);
+	return ;
 }

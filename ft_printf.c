@@ -37,7 +37,7 @@ static int	handler(char spec, va_list args)
 	return (0);
 }
 
-int	printf(const char *format, ...)
+int	myprintf(const char *format, ...)
 {
 	va_list	args;
 	int		count;
