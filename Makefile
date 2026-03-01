@@ -66,7 +66,8 @@ PARSER_SRCS = init_parser.c \
 	reactions_WhenInOption2.c \
 	reactions_WhenInInvalid.c \
 	get_options.c \
-	classify_input.c
+	classify_input.c \
+	ft_putstr.c
 
 # --- Module Disorder : calcul du desordre pour la strategie adaptive ---
 DISORDER_SRCS = disorder.c

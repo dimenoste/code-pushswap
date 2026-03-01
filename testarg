@@ -1,4 +1,6 @@
-
+./parser --simple 1 --medium 25 6 8 --benchmardzdzk // A retester
+ 
+ 
  ./parser 2 3 2
  ./parser --simple --medium --d   //SEGFAULT
  ./parser 1555989665588
