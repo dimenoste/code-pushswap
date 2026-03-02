@@ -6,7 +6,7 @@
 #    By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/03 19:30:58 by yasmine.aic       #+#    #+#              #
-#    Updated: 2026/03/02 15:29:42 by yasmine.aichi    ###   ########.fr        #
+#    Updated: 2026/03/02 17:14:48 by mberraho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,10 +61,12 @@ et appeler la fonction insertion_sort
 Repartir de algo;
 corriger les test avec de vraies;
 
-lundi :
+LUndi 2 mars :
 
-corriger les fichiers a la norme (peut attendre mercredi)
-
+1) corriger les fichiers a la norme + differents.h (Yasmine)
+2) finir algo medium + test (utiliser foonction de cout) (Mehdi)
+3) faire un fichier pour dispatcher les options + adaptive
+4) faire bench
 (ensembles)
 verifier les erreurs de logiques (dans is_sort ((repetitions ...)))
 Bien tester nos algos 

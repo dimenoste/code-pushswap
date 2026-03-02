@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 18:24:59 by mberraho          #+#    #+#             */
-/*   Updated: 2026/02/16 19:04:21 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/02 18:10:59 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ t_output_parsing	*init_output_parser(void)
 
 	output = malloc(sizeof(t_output_parsing));
 	if (!output)
-	{
-		
 		return (NULL);
-	}
-	printf("alloc ok !!!\n");	
 	stk = new_stack(A);
 	output->name_state = InInvalid;
 	output->option_found = NULL;
@@ -79,6 +75,8 @@ int	validate_args(int argc, char *argv[], t_output_parsing *output)
 	int					i;
 
 	i = 1;
+	if (!output)
+		return (0);
 	pvars = &vars;
 	pvars->mystates = init_states();
 	pvars->ptr_parser = malloc(sizeof(t_context));
@@ -93,26 +91,23 @@ t_output_parsing	*run_parser(int argc, char *argv[])
 	t_output_parsing	*output;
 	int					is_args_valid;
 
-
-	printf("from run_parser : argc is %d\n", argc);
-	
-	if (argc == 3){
-			printf("on est dedans : argc is %d\n", argc);
-
+	if (argc < 2)
+		return (NULL);
 	output = init_output_parser();
 	is_args_valid = validate_args(argc, argv, output);
 	if (is_args_valid != 1)
+	{
+		clear_stack(&(output->stack_a));
 		return (NULL);
+	}
 	if (output->name_state == InInvalid)
 	{
 		return (NULL);
 	}
 	if (is_empty_stack(output->stack_a) || is_in_order(output->stack_a))
 	{
-		clear_stack(&(output->stack_a));
 		return (NULL);
 	}
 	printf("\n");
-	}
 	return (output);
 }
