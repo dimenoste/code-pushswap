@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 #include <stdio.h>
-#include "ft_printf.h"
 
 #define GREEN "\033[0;32m"
 #define RED "\033[0;31m"
@@ -74,17 +73,15 @@ void	test_isort_case(long *vals, int count, const char *label)
 	t_stack		*a;
 	t_stack		*b;
 	t_op_list	*ops;
-	//char		msg[128]; tu initialises pas 
+	//char		msg[128]; tu initialises pas
 	size_t nb;
 
 
-	nb = 12356;
-	myprintf("sorted (%u ops)\n", nb); 
 	a = make_stack(vals, count, A);
 	b = new_stack(B);
 	ops = new_op_list();
 	insertion_sort(a, b, ops);
-	
+
 	printf("%s -> sorted (%zu ops)\n", label, ops->count);
 	print_test_result("is in order ?", is_in_order(a) && is_empty_stack(b));
 	print_ops_count(ops, label); // affichage des opérations
@@ -98,14 +95,13 @@ void	test_sort_three_case(long *vals, const char *label, int max_ops)
 {
 	t_stack		*a;
 	t_op_list	*ops;
-	char		msg[128];
 
 	a = make_stack(vals, 3, A);
 	ops = new_op_list();
 	sort_three(a, ops);
-	printf(msg, sizeof(msg), "%s -> sorted, ops<=%d (got %zu)", label, max_ops,
+	printf("%s -> sorted, ops<=%d (got %zu)", label, max_ops,
 		ops->count);
-	print_test_result(msg, is_in_order(a) && (int)ops->count <= max_ops);
+	print_test_result("Is sorted for three", is_in_order(a) && (int)ops->count <= max_ops);
 	clear_stack(&a);
 	clear_op_list(&ops);
 }
