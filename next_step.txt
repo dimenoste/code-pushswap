@@ -6,7 +6,7 @@
 #    By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/03 19:30:58 by yasmine.aic       #+#    #+#              #
-#    Updated: 2026/03/02 14:47:14 by yasmine.aichi    ###   ########.fr        #
+#    Updated: 2026/03/02 15:29:42 by yasmine.aichi    ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,9 +67,7 @@ corriger les fichiers a la norme (peut attendre mercredi)
 
 (ensembles)
 verifier les erreurs de logiques (dans is_sort ((repetitions ...)))
-reflechir a l'implementation de radix
 Bien tester nos algos 
-lire ft_ouput de matan 
 Creation de plusieurs .h (a faire ensemble)
 
 Resoudre Bug : valgrind_lis

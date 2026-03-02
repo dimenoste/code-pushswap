@@ -12,16 +12,23 @@
 
 #include "push_swap.h"
 
-t_output_parsing	init_output_parser(void)
+t_output_parsing	*init_output_parser(void)
 {
-	t_output_parsing	output;
+	t_output_parsing	*output;
 	t_stack				*stk;
 
+	output = malloc(sizeof(t_output_parsing));
+	if (!output)
+	{
+		
+		return (NULL);
+	}
+	printf("alloc ok !!!\n");	
 	stk = new_stack(A);
-	output.name_state = InInvalid;
-	output.option_found = NULL;
-	output.bench_found = NULL;
-	output.stack_a = stk;
+	output->name_state = InInvalid;
+	output->option_found = NULL;
+	output->bench_found = NULL;
+	output->stack_a = stk;
 	return (output);
 }
 
@@ -81,25 +88,31 @@ int	validate_args(int argc, char *argv[], t_output_parsing *output)
 	return (validate_args_inner_loop(i, pvars, argc, argv));
 }
 
-t_stack	*run_parser(int argc, char *argv[])
+t_output_parsing	*run_parser(int argc, char *argv[])
 {
-	t_output_parsing	output;
+	t_output_parsing	*output;
 	int					is_args_valid;
 
-	if (argc < 2)
-		return (NULL);
+
+	printf("from run_parser : argc is %d\n", argc);
+	
+	if (argc == 3){
+			printf("on est dedans : argc is %d\n", argc);
+
 	output = init_output_parser();
-	is_args_valid = validate_args(argc, argv, &output);
+	is_args_valid = validate_args(argc, argv, output);
 	if (is_args_valid != 1)
 		return (NULL);
-	if (output.name_state == InInvalid)
+	if (output->name_state == InInvalid)
 	{
 		return (NULL);
 	}
-	if (is_empty_stack(output.stack_a) || is_in_order(output.stack_a))
+	if (is_empty_stack(output->stack_a) || is_in_order(output->stack_a))
 	{
-		clear_stack(&(output.stack_a));
+		clear_stack(&(output->stack_a));
 		return (NULL);
 	}
-	return (output.stack_a);
+	printf("\n");
+	}
+	return (output);
 }

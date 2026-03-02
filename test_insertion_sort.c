@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 01:44:39 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/01 16:51:12 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/02 15:29:42 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,7 @@ void	test_isort_case(long *vals, int count, const char *label)
 	t_stack		*a;
 	t_stack		*b;
 	t_op_list	*ops;
-	//char		msg[128]; tu initialises pas
-	size_t nb;
+
 
 
 	a = make_stack(vals, count, A);

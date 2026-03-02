@@ -75,7 +75,7 @@ void								init_parser_arg(t_states *mystates,
 										t_stack *stk);
 int									validate_args(int argc, char *argv[],
 										t_output_parsing *output);
-t_stack								*run_parser(int argc, char *argv[]);
+t_output_parsing	*run_parser(int argc, char *argv[]);
 
 // 2) State Interface
 typedef struct s_interface

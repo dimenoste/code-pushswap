@@ -31,9 +31,20 @@ void	print_current_state(t_output_parsing *output)
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
+	t_output_parsing	*output_parser;
 
-	stack_a = run_parser(argc, argv);
+
+	printf("argc is %d\n", argc);
+	output_parser = run_parser(argc, argv);
+
+	
+	print_stack(output_parser->stack_a, "A");
+	if (!output_parser->bench_found)
+		printf("bench is %s\n", output_parser->bench_found);
+	if (!output_parser->bench_found)
+		printf("option is %s\n", output_parser->option_found);
 	// print_stack(stack_a, "AFTER parsing");
+	free(output_parser);
 	clear_stack(&stack_a);
 	return (0);
 }
