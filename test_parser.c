@@ -28,19 +28,7 @@ void	print_current_state(t_output_parsing *output)
 	print_stack(output->stack_a, "stack from parsing");
 }
 
-static void	clear_output(t_output_parsing **out)
-{
-	if (out)
-		return ;
-	if (*out)
-	{
-		if ((*out)->stack_a)
-			free((*out)->stack_a);
-		else
-			free(*out);
-	}
-	return ;
-}
+
 
 int	main(int argc, char *argv[])
 {
@@ -57,9 +45,9 @@ int	main(int argc, char *argv[])
 	if (output_parser->stack_a)
 	{
 		print_stack(output_parser->stack_a, "A");
-		clear_stack(&output_parser->stack_a);
 	}
 	// print_stack(stack_a, "AFTER parsing");
+
 	clear_output(&output_parser);
 	return (0);
 }

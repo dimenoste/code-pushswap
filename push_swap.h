@@ -131,7 +131,7 @@ void								other_when_in_start(t_context *currState,
 										t_states *mystates);
 void								end_when_in_start(t_context *currState,
 										t_states *mystates);
-// delarations of implementations for InDash
+// delarations of implementations for InDash 
 void								letter_when_in_dash(t_context *currState,
 										t_states *mystates);
 void								space_when_in_dash(t_context *currState,
@@ -231,6 +231,8 @@ void								classify_input(t_context *curr_state,
 										t_states *mystates);
 int									extract_option_in_state(t_context *currState);
 int									extract_bench_in_state(t_context *currState);
+void	clear_output(t_output_parsing **out);
+int	validate_output(int argc, char *argv[], t_output_parsing *output);
 
 ////////////STRUCTURE OF STACK ////
 typedef enum e_bool
