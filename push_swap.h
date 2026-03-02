@@ -15,6 +15,8 @@
 # include "ft_printf.h"
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h> // a remplacer une fois les pb de valgrind sur le custom printf seront regles
+
 
 typedef struct implement_handlers	t_states;
 typedef enum state_name				t_enum_state_name;

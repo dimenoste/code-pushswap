@@ -15,7 +15,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 
-int	printf(const char *format, ...);
+int	myprintf(const char *format, ...);
 int	ft_putchar(char c);
 int	ft_strlen(char *str);
 int	ft_putstr(char *str);
