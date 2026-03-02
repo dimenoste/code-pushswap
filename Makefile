@@ -31,7 +31,8 @@ VALGRIND_OUTPUT = valgrind-out.txt
 STACK_SRCS = stack_init.c \
              stack_ops.c \
              stack_helpers.c \
-			 indexing.c
+			 indexing.c \
+
 
 # fichiers sources des operations
 OPS_SRCS = operations_swap.c \
@@ -76,6 +77,14 @@ SORT_SRCS = insertion_sort.c \
 			insertion_sort_utils.c \
 			insertion_sort_helpers.c \
             insertion_sort_cost.c
+
+PRINTF_SRCS = ft_printf.c \
+			ft_putnbr.c \
+			ft_putchar.c \
+			ft_putstr.c \
+			ft_put_hexa.c \
+			ft_ptr.c \
+			ft_printf.h
 #*----
 HEADER = push_swap.h
 MAIN_PUSH_SWAP   = main.c
@@ -85,11 +94,11 @@ MAIN_PARSER_TEST = test_parser.c
 MAIN_ISORT_TEST  = test_insertion_sort.c
 
 # Sources pour chaque executable
-SRCS_PUSH_SWAP   =  $(HEADER) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PUSH_SWAP) 
-SRCS_OP_TEST     = $(HEADER) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(MAIN_OP_TEST)
+SRCS_PUSH_SWAP   =  $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PUSH_SWAP) 
+SRCS_OP_TEST     = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(MAIN_OP_TEST)
 SRCS_PARSER_TEST = $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PARSER_TEST)
 SRCS_LIS_TEST = $(HEADER) $(STACK_SRCS) $(OPS_SRCS) $(LIS_SRCS) $(MAIN_LIS_TEST)
-SRCS_ISORT_TEST  = $(HEADER) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(SORT_SRCS) $(MAIN_ISORT_TEST)
+SRCS_ISORT_TEST  = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(SORT_SRCS) $(MAIN_ISORT_TEST)
 
 OBJS_PUSH_SWAP   = $(SRCS_PUSH_SWAP:%.c=$(OBJ_DIR)/%.o)
 OBJS_OP_TEST     = $(SRCS_OP_TEST:%.c=$(OBJ_DIR)/%.o)
@@ -117,7 +126,7 @@ all: $(NAME)
 # 	@$(CC) $(CFLAGS) $(OBJS_PUSH_SWAP) -o $(NAME)
 # 	@echo "$(GREEN)✓ $(NAME) compile !$(NC)"
 $(NAME): $(OBJS_PUSH_SWAP)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS_PUSH_SWAP) -o $(NAME)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS_PUSH_SWAP) _g -o $(NAME)
 	@echo -e ${RED}main.c pas encore implemente. Utilise 'make test_ops' ou 'make test_parser'${NC}
 
 # --- Compilation du test des operations ---
@@ -138,7 +147,7 @@ $(NAME_LIS): $(OBJS_LIS_TEST)
 
 # -- Compilation du test du simple --
 $(NAME_ISORT_TEST): $(OBJS_ISORT_TEST)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS_ISORT_TEST) -o $(NAME_ISORT_TEST)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS_ISORT_TEST) -g -o $(NAME_ISORT_TEST)
 	@echo -e ${GREEN}✓ $(NAME_ISORT_TEST) compile !${NC}
 
 
@@ -184,17 +193,17 @@ test_isort: $(NAME_ISORT_TEST)
 # Valgrind sur le test des operations
 valgrind: $(NAME_OP_TEST)
 	@echo -e ${YELLOW}✓ Valgrind en cours...${NC}
-	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_OP_TEST)
+	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(NAME_OP_TEST)
 
 #Valgrind sur les test de l'algo simple
 valgrind_isort: $(NAME_ISORT_TEST)
 	@echo -e "\033[0;33m✓ Valgrind (insertion_sort) en cours...\033[0m"
-	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_ISORT_TEST)
+	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(NAME_ISORT_TEST)
 
 #Valgrind sur les test de l'algo medium
 valgrind_lis: $(NAME_LIS)
 	@echo -e "\033[0;33m✓ Valgrind (lis_sort) en cours...\033[0m"
-	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME_LIS)
+	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(NAME_LIS)
 	
 norm:
 	@norminette $(SRCS_PUSH_SWAP)

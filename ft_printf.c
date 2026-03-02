@@ -30,7 +30,7 @@ static int	handler(char spec, va_list args)
 		return (ft_ptr(va_arg(args, void *)));
 	else if (spec == 'l')
 		return (ft_putnbr_l(va_arg(args, long)));
-	else if (spec == 'z')
+	else if (spec == 'u')
 		return (ft_putnbr_zu(va_arg(args, size_t)));
 	else if (spec == '%')
 		return (ft_putchar('%'));

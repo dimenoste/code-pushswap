@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 #include <stdio.h>
+#include "ft_printf.h"
 
 #define GREEN "\033[0;32m"
 #define RED "\033[0;31m"
@@ -19,24 +20,37 @@
 #define BLUE "\033[0;34m"
 #define NC "\033[0m"
 
+
 static int		g_tests_passed = 0;
 static int		g_tests_failed = 0;
 static size_t	g_total_ops = 0;
 
+// void	print_test_result(const char *test_name, int passed)
+// {
+// 	if (passed)
+// 	{
+// 		printf("%s[PASS]%s %s\n", GREEN, NC, test_name);
+// 		g_tests_passed++;
+// 	}
+// 	else
+// 	{
+// 		printf("%s[FAIL]%s %s\n", RED, NC, test_name);
+// 		g_tests_failed++;
+// 	}
+// }
 void	print_test_result(const char *test_name, int passed)
 {
 	if (passed)
 	{
-		printf("%s[PASS]%s %s\n", GREEN, NC, test_name);
+		printf("%s[✓]%s %s\n", GREEN, NC, test_name);
 		g_tests_passed++;
 	}
 	else
 	{
-		printf("%s[FAIL]%s %s\n", RED, NC, test_name);
+		printf("%s[✗]%s %s\n", RED, NC, test_name);
 		g_tests_failed++;
 	}
 }
-
 t_stack	*make_stack(long *values, int count, t_stack_name name)
 {
 	t_stack	*stk;
@@ -60,14 +74,19 @@ void	test_isort_case(long *vals, int count, const char *label)
 	t_stack		*a;
 	t_stack		*b;
 	t_op_list	*ops;
-	char		msg[128];
+	//char		msg[128]; tu initialises pas 
+	size_t nb;
 
+
+	nb = 12356;
+	myprintf("sorted (%u ops)\n", nb); 
 	a = make_stack(vals, count, A);
 	b = new_stack(B);
 	ops = new_op_list();
 	insertion_sort(a, b, ops);
-	printf(msg, sizeof(msg), "%s -> sorted (%zu ops)", label, ops->count);
-	print_test_result(msg, is_in_order(a) && is_empty_stack(b));
+	
+	printf("%s -> sorted (%zu ops)\n", label, ops->count);
+	print_test_result("is in order ?", is_in_order(a) && is_empty_stack(b));
 	print_ops_count(ops, label); // affichage des opérations
 	g_total_ops += ops->count;   // <- ajoute au total global
 	clear_stack(&a);
