@@ -144,7 +144,7 @@ void	algo_lis(void)
 	print_stack(b, "B");
 	clear_stack(&a);
 	clear_stack(&b);
-	free(ops);
+	clear_op_list(&ops);
 	printf("======================================================================\n\n");
 }
 
