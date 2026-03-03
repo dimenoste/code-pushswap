@@ -148,6 +148,54 @@ void	algo_lis(void)
 	printf("======================================================================\n\n");
 }
 
+void	lis_insertion_algo(t_stack *a, t_stack *b, t_op_list *ops)
+{
+	size_t	len_a;
+
+	if (a->length < 2)
+		return ;
+	// add lis and index
+	add_lis_to_nodes(a);
+	assign_indices(a);
+	// push all non lis elements to B
+	len_a = a->length;
+	while (len_a > 0)
+	{
+				printf("head of a %d\n", a->head->value);
+		printf("head of b %d\n", b->head->value);
+		print_stack(a, "A");
+		print_stack(b, "B");
+		if (a->head->is_lis == 0)
+			push(a, b, ops);
+		else
+			rotate(a, ops);
+		len_a--;
+	}
+	print_stack(a, "A");
+	print_stack(b, "B");
+	print_index_stack(a, "A");
+	print_index_stack(b, "B");
+	print_lis_stack(a, "A");
+	print_lis_stack(b, "B");
+	// int i = 5;
+	while (b->length > 0) // && i > 0)
+	{
+		if (a->head->index > b->head->index)
+		{
+			push(b, a, ops);
+		}
+		else
+			rotate(a, ops);
+		// i--;
+	}
+	printf("=== A should be circularly up to now rotated,rotate until start with 0 ==\n\n");
+	rotate_until_sorted(a, ops);
+	//// print and clean
+	printf("=====================================================================\n\n");
+	print_stack(a, "A");
+	print_stack(b, "B");
+}
+
 size_t	square_bucket(size_t len_stk)
 {
 	size_t	i;

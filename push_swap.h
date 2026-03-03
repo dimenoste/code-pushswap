@@ -6,17 +6,17 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:38:32 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/03 14:59:01 by yasmine.aichi    ###   ########.fr       */
+/*   Updated: 2026/03/03 23:35:47 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "ft_printf.h"
+# include <stdio.h>
+// a remplacer une fois les pb de valgrind sur le custom printf seront regles
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h> // a remplacer une fois les pb de valgrind sur le custom printf seront regles
-
 
 typedef struct implement_handlers	t_states;
 typedef enum state_name				t_enum_state_name;
@@ -75,8 +75,7 @@ void								init_parser_arg(t_states *mystates,
 										t_stack *stk);
 int									validate_args(int argc, char *argv[],
 										t_output_parsing *output);
-t_output_parsing	*run_parser(int argc, char *argv[]);
-
+t_output_parsing					*run_parser(int argc, char *argv[]);
 
 // 2) State Interface
 typedef struct s_interface
@@ -232,8 +231,9 @@ void								classify_input(t_context *curr_state,
 										t_states *mystates);
 int									extract_option_in_state(t_context *currState);
 int									extract_bench_in_state(t_context *currState);
-void	clear_output(t_output_parsing **out);
-int	validate_output(int argc, char *argv[], t_output_parsing *output);
+void								clear_output(t_output_parsing **out);
+int									validate_output(int argc, char *argv[],
+										t_output_parsing *output);
 
 ////////////STRUCTURE OF STACK ////
 typedef enum e_bool
@@ -282,7 +282,7 @@ typedef struct s_op_list
 {
 	t_op_type						*operations;
 	size_t							count;
-	size_t 							capacity;
+	size_t							capacity;
 }									t_op_list;
 
 /// === stack_init.c file ===
@@ -342,6 +342,10 @@ typedef struct s_cost
 	int								cost_b;
 }									t_cost;
 
+// signature des algos de sort
+typedef void						(*run_algo)(t_stack *a, t_stack *b,
+							t_op_list *ops);
+
 // === indexing.c ===
 void								assign_indices(t_stack *stk);
 // === insertion_sort.c ===
@@ -384,5 +388,14 @@ int									is_sorted_circular(t_stack *stk);
 void								algo_lis(void);
 void								print_array(int *arr, int len);
 int									*copy_values(t_stack *stk);
+// medium
+void								lis_insertion_algo(t_stack *a, t_stack *b,
+										t_op_list *ops);
+// === strategy.c ===
+t_op_list							*run_algo_simple(t_stack *stk);
+t_op_list							*run_algo_medium(t_stack *stk);
+t_op_list							*run_algo_complex(t_stack *stk);
+t_op_list							*run_algo_adaptive(t_stack *stk);
+void								run_strategy(t_output_parsing *output_parser);
 
 #endif
