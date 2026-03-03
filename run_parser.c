@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 18:24:59 by mberraho          #+#    #+#             */
-/*   Updated: 2026/03/02 18:10:59 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/03 15:49:48 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ int	validate_output(int argc, char *argv[], t_output_parsing *output)
 	return (1);
 }
 
-
 t_output_parsing	*run_parser(int argc, char *argv[])
 {
 	t_output_parsing	*output;
@@ -137,3 +136,4 @@ t_output_parsing	*run_parser(int argc, char *argv[])
 	}
 	return (output);
 }
+

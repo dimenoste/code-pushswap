@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:38:32 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/01 16:49:12 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/03 14:59:01 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int									validate_args(int argc, char *argv[],
 										t_output_parsing *output);
 t_output_parsing	*run_parser(int argc, char *argv[]);
 
+
 // 2) State Interface
 typedef struct s_interface
 {
@@ -131,7 +132,7 @@ void								other_when_in_start(t_context *currState,
 										t_states *mystates);
 void								end_when_in_start(t_context *currState,
 										t_states *mystates);
-// delarations of implementations for InDash 
+// delarations of implementations for InDash
 void								letter_when_in_dash(t_context *currState,
 										t_states *mystates);
 void								space_when_in_dash(t_context *currState,
@@ -281,7 +282,7 @@ typedef struct s_op_list
 {
 	t_op_type						*operations;
 	size_t							count;
-	size_t							capacity;
+	size_t 							capacity;
 }									t_op_list;
 
 /// === stack_init.c file ===

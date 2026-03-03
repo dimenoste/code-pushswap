@@ -6,7 +6,7 @@
 #    By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 09:12:00 by yasmine.aic       #+#    #+#              #
-#    Updated: 2026/03/02 17:00:30 by mberraho         ###   ########.fr        #
+#    Updated: 2026/03/03 14:54:00 by yasmine.aichi    ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@ MAIN_PUSH_SWAP   = main.c
 MAIN_LIS_TEST   = test_lis.c
 MAIN_OP_TEST     = test_operations.c
 MAIN_PARSER_TEST = test_parser.c
-MAIN_ISORT_TEST  = test_insertion_sort.c
+MAIN_ISORT_TEST  = test_isort.c
 
 # Sources pour chaque executable
 SRCS_PUSH_SWAP   =  $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PUSH_SWAP) 

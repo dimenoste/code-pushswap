@@ -6,12 +6,16 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 01:44:39 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/02 17:06:54 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/03 14:12:29 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+
 
 #define GREEN "\033[0;32m"
 #define RED "\033[0;31m"
@@ -22,31 +26,18 @@
 
 static int		g_tests_passed = 0;
 static int		g_tests_failed = 0;
-static size_t	g_total_ops = 0;
 
-// void	print_test_result(const char *test_name, int passed)
-// {
-// 	if (passed)
-// 	{
-// 		printf("%s[PASS]%s %s\n", GREEN, NC, test_name);
-// 		g_tests_passed++;
-// 	}
-// 	else
-// 	{
-// 		printf("%s[FAIL]%s %s\n", RED, NC, test_name);
-// 		g_tests_failed++;
-// 	}
-// }
-void	print_test_result(const char *test_name, int passed)
+
+
+
+void print_test_result(const char *test_name,int passed )
 {
-	if (passed)
+	if(passed)
 	{
-		printf("%s[✓]%s %s\n", GREEN, NC, test_name);
+		printf("%s[PASS]%s %s \n",GREEN,NC,test_name);
 		g_tests_passed++;
-	}
-	else
-	{
-		printf("%s[✗]%s %s\n", RED, NC, test_name);
+	}else {
+		printf("%s[FAILED]%s %s \n",RED, NC, test_name);
 		g_tests_failed++;
 	}
 }
@@ -64,10 +55,46 @@ t_stack	*make_stack(long *values, int count, t_stack_name name)
 	}
 	return (stk);
 }
-void	print_ops_count(t_op_list *ops, const char *label)
+
+void fill_random_unique(long *arr, int size)
 {
-	printf("%s[INFO]%s %s -> %zu opérations\n", BLUE, NC, label, ops->count);
+	int i;
+	int j;
+	long tmp;
+	i = 0;
+	while(i < size)
+	{
+		arr[i] = i + 1;
+		i++;
+	}
+	i = size - 1;
+	while (i > 0) {
+		// rand() genere un int random entre 0 and i (stdlib)
+		j = rand() % (i + 1);
+		tmp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = tmp;
+		i--;
+		}
 }
+void print_op_count(t_op_list *ops)
+{
+	printf("%zu \n", ops->count);
+}
+
+void test_op_list_output(void)
+{
+	t_stack *a;
+	t_stack *b;
+	t_op_list *ops;
+
+	long vals[] = {-3,5,3,2,1};
+	printf("\n %s=== TEST : Affichage du nombre d'operaion===%s\n",YELLOW,NC);
+	a = make_stack(vals,4, A);
+
+}
+
+
 void	test_isort_case(long *vals, int count, const char *label)
 {
 	t_stack		*a;
@@ -83,8 +110,7 @@ void	test_isort_case(long *vals, int count, const char *label)
 
 	printf("%s -> sorted (%zu ops)\n", label, ops->count);
 	print_test_result("is in order ?", is_in_order(a) && is_empty_stack(b));
-	print_ops_count(ops, label); // affichage des opérations
-	g_total_ops += ops->count;   // <- ajoute au total global
+	print_op_count(ops); // affichage des opérations
 	clear_stack(&a);
 	clear_stack(&b);
 	clear_op_list(&ops);
@@ -256,6 +282,5 @@ int	main(void)
 	printf("==================================================\n");
 	printf("%s\n", NC);
 	printf("%s[INFO]%s Total opérations insertion_sort : %zu\n", BLUE, NC,
-		g_total_ops);
 	return (g_tests_failed != 0);
 }
