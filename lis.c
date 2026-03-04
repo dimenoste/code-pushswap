@@ -3,9 +3,9 @@
 // https://cp-algorithms.com/dynamic_programming/longest_increasing_subsequence.html
 #include "ft_printf.h"
 #include "push_swap.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
 
 void	print_array(int *arr, int len)
 {
@@ -109,7 +109,7 @@ t_bool	is_in_lis(int val, int *arr, int len)
 	return (FALSE);
 }
 
-void	add_lis_to_nodes(t_stack *stk)
+int	add_lis_to_nodes(t_stack *stk)
 {
 	int		*arr;
 	size_t	i;
@@ -120,7 +120,7 @@ void	add_lis_to_nodes(t_stack *stk)
 	len_lis = 0;
 	i = 0;
 	if (!stk || stk->length < 2 || !stk->head)
-		return ;
+		return (0);
 	arr = copy_values(stk);
 	lis_subseq = lis(arr, stk->length, &len_lis);
 	ptr_node = stk->head;
@@ -132,5 +132,5 @@ void	add_lis_to_nodes(t_stack *stk)
 	}
 	free(lis_subseq);
 	free(arr);
-	return ;
+	return (len_lis);
 }

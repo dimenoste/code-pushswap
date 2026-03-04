@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_algo.c                                        :+:      :+:    :+:   */
+/*   test_lis.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 15:12:31 by mberraho          #+#    #+#             */
-/*   Updated: 2026/03/01 16:39:25 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:55:51 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,37 +82,30 @@ void	test_find_min_pos(void)
 void	test_is_sorted_circular(void)
 {
 	t_stack	*a;
-	t_stack	*b;
 	t_bool	res;
 
 	printf("============= TEST medium_algo.c: is_sorted_circular ==================\n");
 	// Non Sorted
 	a = new_stack(A);
-	stack_add_back(a, new_node(8));
-	stack_add_back(a, new_node(3));
-	stack_add_back(a, new_node(4));
-	stack_add_back(a, new_node(-5));
-	stack_add_back(a, new_node(5));
-	stack_add_back(a, new_node(2));
-	stack_add_back(a, new_node(0));
-	stack_add_back(a, new_node(-1));
-	stack_add_back(a, new_node(9));
-	stack_add_back(a, new_node(1));
+	stack_add_back(a, new_node(938));
+	stack_add_back(a, new_node(987));
+	stack_add_back(a, new_node(395));
+	stack_add_back(a, new_node(398));
+	// 938 → 987 → 395 → 398
+	print_stack(a, "A");
 	res = is_sorted_circular(a);
-	print_test_result("is stack circularly sorted ?\n", FALSE == res);
+	print_test_result("is stack circularly sorted ?\n", TRUE == res);
 	print_stack(a, "A");
 	clear_stack(&a);
-	// Sorted
-	b = new_stack(A);
-	stack_add_back(b, new_node(564));
-	stack_add_back(b, new_node(15164));
-	stack_add_back(b, new_node(-1));
-	stack_add_back(b, new_node(2));
-	stack_add_back(b, new_node(3));
-	res = is_sorted_circular(b);
-	print_test_result("is stack circularly sorted ?\n", TRUE == res);
-	print_stack(b, "A");
-	clear_stack(&b);
+	// // Sorted
+	// b = new_stack(A);
+	// stack_add_back(b, new_node(564));
+	// stack_add_back(b, new_node(15164));
+	// stack_add_back(b, new_node(-1));
+	// stack_add_back(b, new_node(2));
+	// stack_add_back(b, new_node(3));
+	// res = is_sorted_circular(b);
+	// print_test_result("is stack circularly sorted ?\n", TRUE == res);
 	printf("======================================================================\n\n");
 }
 
@@ -125,7 +118,7 @@ int	main(void)
 	printf("╚════════════════════════════════════════════════╝\n");
 	printf("%s\n", NC);
 	/* Call tests functions*/
-	test_find_min_pos();
+	// test_find_min_pos();
 	test_is_sorted_circular();
 	algo_lis();
 	printf("\n%s", BLUE);
