@@ -40,16 +40,6 @@ void		push_all_to_a(t_stack *a, t_stack *b, t_op_list *ops);
 t_cost		find_cheapest(t_stack *a, t_stack *b);
 void		execute_rotations(t_stack *a, t_stack *b, t_op_list *ops,
 				t_cost *c);
-// === benchmark.c ===
-void								print_bench_ops(t_op_list *ops);
-void								print_bench(t_output_parsing *out,
-										t_op_list *ops, float disorder);
-// === radix.c ===
-
-void    slow_radix_sort(t_stack *a, t_stack *b, t_op_list *out, int max_bits);
-void    radix_sort(t_stack *a, t_stack *b, t_op_list *out, int max_bits);
-int    find_max_bit(unsigned long value);
-void	radix_sort_algo(t_stack *a, t_stack *b, t_op_list *ops);
 
 // utils sort
 void		print_array(int *arr, int len);
