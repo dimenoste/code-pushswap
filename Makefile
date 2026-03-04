@@ -14,8 +14,6 @@
 # TODO
 # ajouter .d
 # ajouter -M
-# ajouter differents .h differents seln les dossiers 
-# https://stackoverflow.com/questions/19114410/what-is-d-file-after-building-with-make
 
 NAME            = push_swap
 NAME_OP_TEST    = operations
