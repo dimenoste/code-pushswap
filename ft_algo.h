@@ -40,7 +40,13 @@ void		push_all_to_a(t_stack *a, t_stack *b, t_op_list *ops);
 t_cost		find_cheapest(t_stack *a, t_stack *b);
 void		execute_rotations(t_stack *a, t_stack *b, t_op_list *ops,
 				t_cost *c);
-
+// === disorder.c ===
+float	compute_disorder(t_stack *a);
+//=== radix.c ===
+void    slow_radix_sort(t_stack *a, t_stack *b, t_op_list *out, int max_bits);
+int    find_max_bit(unsigned long value);
+void	radix_sort_algo(t_stack *a, t_stack *b, t_op_list *ops);
+void    radix_sort(t_stack *a, t_stack *b, t_op_list *out, int max_bits);
 // utils sort
 void		print_array(int *arr, int len);
 void		bubble(int *arr, int len);
