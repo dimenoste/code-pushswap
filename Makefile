@@ -6,7 +6,7 @@
 #    By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 09:12:00 by yasmine.aic       #+#    #+#              #
-#    Updated: 2026/03/03 23:42:30 by mberraho         ###   ########.fr        #
+#    Updated: 2026/03/04 16:45:24 by mberraho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ STACK_SRCS = stack_init.c \
              stack_ops.c \
              stack_helpers.c \
 			 indexing.c \
+			 _sort_array.c
 
 
 # fichiers sources des operations

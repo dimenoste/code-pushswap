@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 13:34:30 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/03 23:50:54 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/04 16:38:37 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #define BLUE "\033[0;34m"
 #define NC "\033[0m"
 
-#define N 1000
+#define N 1000000
 
 static int	g_tests_passed = 0;
 static int	g_tests_failed = 0;
@@ -268,6 +268,7 @@ size_t	bench_sort(int *vals, int count, const char *label, run_algo algo)
 	print_stack(a, "A before sort");
 	algo(a, b, ops);
 	print_stack(a, "A sorted");
+	print_index_stack(a, "A rank sorted");
 	n_ops = ops->count;
 	print_test_result(label, is_in_order(a) && is_empty_stack(b));
 	print_stack(b, "B after sort");
@@ -429,7 +430,7 @@ int	main(void)
 	// test_sort_small();
 	// test_visual_sort();
 	// test_basic_cases(lis_insertion_algo);
-	// test_100_random(lis_insertion_algo);
+	test_100_random(lis_insertion_algo);
 	// test_500_random(lis_insertion_algo);
 	test_10_random(lis_insertion_algo);
 	printf("\n%s", BLUE);

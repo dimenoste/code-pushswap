@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 20:20:11 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/03 14:47:48 by yasmine.aichi    ###   ########.fr       */
+/*   Updated: 2026/03/04 16:48:15 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	*copy_values(t_stack *stk)
 	t_node	*cur;
 	size_t	i;
 
-	arr = malloc(sizeof(long) * stk->length);
+	arr = malloc(sizeof(int) * (int)stk->length);
 	if (!arr)
 		return (NULL);
 	cur = stk->head;
