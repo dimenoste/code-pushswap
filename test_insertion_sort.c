@@ -6,12 +6,12 @@
 	/*                                                        :::      ::::::::   */
 //
 	/*   test_insertion_sort.c                              :+:      :+:    :+:   */
-// /*                                                    +:+ +:+        
-	+:+     */
-// /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+      
-	+#+        */
-// /*                                                +#+#+#+#+#+  
-	+#+           */
+// /*                                                    +:+ +:+
+//	+:+     */
+// /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+
+//	+#+        */
+// /*                                                +#+#+#+#+#+
+//	+#+           */
 //
 	/*   Created: 2026/02/28 01:44:39 by yasmine.aic       #+#    #+#             */
 //

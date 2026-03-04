@@ -417,9 +417,9 @@ int	main(void)
 	// test_sort_small();
 	// test_visual_sort();
 	// test_basic_cases(insertion_sort);
-	// test_10_random(insertion_sort);
-	// test_100_random(insertion_sort);
-	// test_500_random(insertion_sort);
+	 test_10_random(insertion_sort);
+	 test_100_random(insertion_sort);
+	 test_500_random(insertion_sort);
 	// printf("==================================================\n");
 	// printf("       MEDIUM SORT - Test Suite                 \n");
 	// printf("       LIS-optimized with rr/rrr                 \n");
@@ -432,7 +432,8 @@ int	main(void)
 	// test_basic_cases(lis_insertion_algo);
 	// test_100_random(lis_insertion_algo);
 	test_500_random(lis_insertion_algo);
-	// test_10_random(lis_insertion_algo);
+	test_10_random(lis_insertion_algo);
+
 	printf("\n%s", BLUE);
 	printf("==================================================\n");
 	printf("              Test Results                         \n");
