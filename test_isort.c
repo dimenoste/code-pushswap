@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 13:34:30 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/04 16:38:37 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/04 17:03:12 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -430,9 +430,9 @@ int	main(void)
 	// test_sort_small();
 	// test_visual_sort();
 	// test_basic_cases(lis_insertion_algo);
-	test_100_random(lis_insertion_algo);
-	// test_500_random(lis_insertion_algo);
-	test_10_random(lis_insertion_algo);
+	// test_100_random(lis_insertion_algo);
+	test_500_random(lis_insertion_algo);
+	// test_10_random(lis_insertion_algo);
 	printf("\n%s", BLUE);
 	printf("==================================================\n");
 	printf("              Test Results                         \n");

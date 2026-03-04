@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:38:32 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/03 23:35:47 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/04 17:10:55 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -379,7 +379,7 @@ int									*lis(int *arr, int len_arr, int *len_lis);
 // size_t								find_index(int *sorted, size_t len,
 //  										int value);
 
-void								add_index_node(t_stack *stk);
+int									add_index_node(t_stack *stk);
 t_bool								is_in_lis(int val, int *arr, int len);
 void								add_lis_to_nodes(t_stack *stk);
 size_t								find_min_ptr_pos(t_stack *stk,

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   insertion_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
+/*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/26 23:08:07 by yasmine.aichi     #+#    #+#             */
-/*   Updated: 2026/02/28 01:26:27 by yasmine.aichi    ###   ########.fr       */
+/*   Created: 2026/02/26 23:08:07 by yasmine.aic       #+#    #+#             */
+/*   Updated: 2026/03/04 17:02:26 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-//j'ai vraiment besoin d'expliquer ?
+
+// j'ai vraiment besoin d'expliquer ?
 void	sort_two(t_stack *a, t_op_list *ops)
 {
 	if (a->head->value > a->head->next->value)
@@ -23,7 +24,8 @@ void	sort_three(t_stack *a, t_op_list *ops)
 	long	first;
 	long	second;
 	long	last;
-	//imagine on a first=1, second=3, third=2
+
+	// imagine on a first=1, second=3, third=2
 	first = a->head->value;
 	second = a->head->next->value;
 	last = a->tail->value;
@@ -72,25 +74,25 @@ void	insertion_sort(t_stack *a, t_stack *b, t_op_list *ops)
 	}
 	if (a->length == 3)
 	{
-		sort_three(a, ops);  // petit tri hardcode
+		sort_three(a, ops); // petit tri hardcode
 		return ;
 	}
-	assign_indices(a);// normalise en 0..n-1 (plus simple a comparer) voir indexing.c
-
-// on envoie des elements de a vers b tant qu'il en reste plus de 3
-// pourquoi 3 ?
-// parce que trier 3 elements c'est ultra simple et quasi gratuit (max 2 ops)
-// donc au lieu de continuer a calculer des couts compliques,
-// on garde une base petite et facile a trier direct.
-//
-// cette boucle ne trie PAS a.
-// elle fait juste descendre a a 3 elements.
-// les 3 restants peuvent etre dans n'importe quel ordre.
-//
-// c'est pour ca qu'on appelle sort_three juste apres,
-// pour repartir sur une base propre avant de reinserer b.
+	// assign_indices(a);// normalise en 0..n-1 (plus simple a comparer) voir indexing.c
+	// on envoie des elements de a vers b tant qu'il en reste plus de 3
+	// pourquoi 3 ?
+	// parce que trier 3 elements c'est ultra simple et quasi gratuit (max 2 ops)
+	// donc au lieu de continuer a calculer des couts compliques,
+	// on garde une base petite et facile a trier direct.
+	//
+	// cette boucle ne trie PAS a.
+	// elle fait juste descendre a a 3 elements.
+	// les 3 restants peuvent etre dans n'importe quel ordre.
+	//
+	// c'est pour ca qu'on appelle sort_three juste apres,
+	// pour repartir sur une base propre avant de reinserer b.
 	while (a->length > 3)
-		push_cheapest_to_b(a, b, ops);// construit b en ordre decroissant tout le coeur du truc
-	sort_three(a, ops); // trie les 3 derniers
+		push_cheapest_to_b(a, b, ops);
+			// construit b en ordre decroissant tout le coeur du truc
+	sort_three(a, ops);                // trie les 3 derniers
 	push_all_to_a(a, b, ops);
 }
