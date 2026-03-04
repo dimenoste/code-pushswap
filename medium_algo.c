@@ -124,6 +124,7 @@ void	algo_lis(void)
 	t_op_list	*ops;
 	size_t		len_a;
 	size_t		max_a;
+	int			nb_lis;
 
 	printf("============= TEST medium_algo.c: algo_lis ==================\n");
 	ops = new_op_list();
@@ -143,7 +144,7 @@ void	algo_lis(void)
 	if (a->length < 2)
 		return ;
 	// add lis and index
-	add_lis_to_nodes(a);
+	nb_lis = add_lis_to_nodes(a);
 	printf("====");
 	assign_indices(a);
 	// create stack b
@@ -158,13 +159,12 @@ void	algo_lis(void)
 	printf("================================== insert non lis dans B ====================================\n\n");
 	// push all non lis elements to B
 	len_a = a->length;
-	while (len_a > 0)
+	while (a->length > 0 && nb_lis > 0)
 	{
 		if (a->head->is_lis == 0)
 			push(a, b, ops);
 		else
 			rotate(a, ops);
-		len_a--;
 	}
 	printf("========================= after insert dans B ============================================\n\n");
 	print_stack(a, "A");
