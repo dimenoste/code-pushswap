@@ -12,15 +12,7 @@
 
 #include "push_swap.h"
 
-/*
- * C'est comme le Bubble sort que tu voulais faire pour
- * trier,
- * arr[0] = le plus petit, arr[len -1] = plus grand
- * bref chaque position "triee" = le rang de cette valeur
- *
- * */
-
-static void	sort_long_array(int *arr, int len)
+static void	sort_int_array(int *arr, int len)
 {
 	int	i;
 	int	j;
@@ -32,7 +24,7 @@ static void	sort_long_array(int *arr, int len)
 		j = i + 1;
 		while (j < len)
 		{
-			if (arr[j] < arr[i]) // si on trouve plus petit on echange
+			if (arr[j] < arr[i])
 			{
 				tmp = arr[i];
 				arr[i] = arr[j];
@@ -44,10 +36,9 @@ static void	sort_long_array(int *arr, int len)
 	}
 }
 
-// trouver le fameux rang dans l'array trie
-static size_t	find_index(int *sorted, size_t len, int value)
+static int	find_rank(int *sorted, int len, int value)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < len)
@@ -56,14 +47,8 @@ static size_t	find_index(int *sorted, size_t len, int value)
 			return (i);
 		i++;
 	}
-	return (-1); // on a pas trouver value dans l'array (ca devrait pas arriver)
+	return (-1);
 }
-
-/*
- * copie les valeurs de la stack dans un tableau
- * c'est une implementation de flemmard pcq c'est
- * plus facile de trier un tableau qu'une liste
- * */
 
 int	*copy_values(t_stack *stk)
 {
@@ -71,7 +56,7 @@ int	*copy_values(t_stack *stk)
 	t_node	*cur;
 	size_t	i;
 
-	arr = malloc(sizeof(long) * stk->length);
+	arr = malloc(sizeof(int) * stk->length);
 	if (!arr)
 		return (NULL);
 	cur = stk->head;
@@ -84,14 +69,6 @@ int	*copy_values(t_stack *stk)
 	}
 	return (arr);
 }
-/*
- * C'est la normalisation dont on parlait
- * je le faisais de maniere degueu dans find
- * insert pos b.
- * tu sais genre : [500, -3, 42] → rang [2, 0, 1]
- * ca copie dans un tab; trie chaque pos a un rang
- *[our chaque noeud, cherche le rang de sa valeur
- * */
 
 void	assign_indices(t_stack *stk)
 {
@@ -104,14 +81,12 @@ void	assign_indices(t_stack *stk)
 	sorted = copy_values(stk);
 	if (!sorted)
 		return ;
-	// vu que y'a un malloc dans copy_values
-	sort_long_array(sorted, stk->length); //;) conversion de type
+	sort_int_array(sorted, (int)stk->length);
 	cur = stk->head;
 	i = 0;
 	while (i < stk->length)
 	{
-		// chaque noeud recoit son rang ^0^
-		cur->index = find_index(sorted, stk->length, cur->value);
+		cur->index = find_rank(sorted, (int)stk->length, cur->value);
 		cur = cur->next;
 		i++;
 	}

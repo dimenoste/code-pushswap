@@ -47,6 +47,8 @@ void    slow_radix_sort(t_stack *a, t_stack *b, t_op_list *out, int max_bits);
 int    find_max_bit(unsigned long value);
 void	radix_sort_algo(t_stack *a, t_stack *b, t_op_list *ops);
 void    radix_sort(t_stack *a, t_stack *b, t_op_list *out, int max_bits);
+// === bench_print.c ===
+void	print_bench_ops(t_op_list *ops);
 // utils sort
 void		print_array(int *arr, int len);
 void		bubble(int *arr, int len);
