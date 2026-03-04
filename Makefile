@@ -6,7 +6,7 @@
 #    By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 09:12:00 by yasmine.aic       #+#    #+#              #
-#    Updated: 2026/03/02 15:29:42 by yasmine.aichi    ###   ########.fr        #
+#    Updated: 2026/03/03 14:54:00 by yasmine.aichi    ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ MAIN_PUSH_SWAP   = main.c
 MAIN_LIS_TEST   = test_lis.c
 MAIN_OP_TEST     = test_operations.c
 MAIN_PARSER_TEST = test_parser.c
-MAIN_ISORT_TEST  = test_insertion_sort.c
+MAIN_ISORT_TEST  = test_isort.c
 
 # Sources pour chaque executable
 SRCS_PUSH_SWAP   =  $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PUSH_SWAP) 
@@ -163,16 +163,18 @@ test_ops: $(NAME_OP_TEST)
 # lance le test du parser
 test_parser: $(NAME_PARSER_TEST)
 	@echo -e ${YELLOW}Lancement des tests parser...${NC}
-	@echo -e ${YELLOW}.........Test...........${NC}
+	@echo -e ${YELLOW}.........Test ordonne...........${NC}
 	@./$(NAME_PARSER_TEST) 1 2 
-	@echo -e ${YELLOW}.........Test...........${NC}
-	@./$(NAME_PARSER_TEST) --simple 1 2 3
+	@echo -e ${YELLOW}.........Test avec option...........${NC}
+	@./$(NAME_PARSER_TEST) --simple 56 5 9 8
+	@echo -e ${YELLOW}.........Test avec option et bench ...........${NC}
+	@./$(NAME_PARSER_TEST) --simple 56 5 9 8 --bench
 	@echo -e ${YELLOW}.........Test doit afficher Error...........${NC}
 	@./$(NAME_PARSER_TEST) l 1 2 3
-	@echo -e ${YELLOW}.........Test...........${NC}
+	@echo -e ${YELLOW}.........Test vide ...........${NC}
 	@./$(NAME_PARSER_TEST)
 	@echo -e ${YELLOW}.........Test doit afficher Error...........${NC}
-	@./$(NAME_PARSER_TEST) --simple  --bencg=
+	@./$(NAME_PARSER_TEST) --simple  --bencg= 1 2 6 -1
 	@echo -e ${GREEN}Le parser marche...${NC}
 
 # lance le test algo medium
@@ -233,4 +235,4 @@ fclean: clean
 re: fclean all
 # --- Phony ---
 .PHONY: all clean fclean re test_ops test_parser test_isort \
-        valgrind valgrind_isort norm help
+        valgrind valgrind_isort norm help valgrind_lis

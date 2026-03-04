@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   insertion_sort_cost.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
+/*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 22:59:23 by yasmine.aichi     #+#    #+#             */
 /*   Updated: 2026/03/02 18:27:51 by yasmine.aichi    ###   ########.fr       */

@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 20:20:11 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/01 16:46:19 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/03 14:47:48 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void	assign_indices(t_stack *stk)
 	size_t	i;
 
 	if (!stk || stk->length == 0)
-		// write("Error." ou "\n") ?
 		return ;
 	sorted = copy_values(stk);
 	if (!sorted)
