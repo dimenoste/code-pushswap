@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:38:32 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/04 17:10:55 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/05 20:17:38 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -326,7 +326,7 @@ void								print_stack(t_stack *stack,
 void								print_index_stack(t_stack *stack,
 										const char *name);
 void								print_lis_stack(t_stack *stack,
-										const char *name);
+										const char *name, size_t nb_lis);
 
 int									is_node_unique(t_stack *stk, t_node *node);
 int									is_in_order(t_stack *stk);
@@ -367,6 +367,10 @@ void								push_all_to_a(t_stack *a, t_stack *b,
 t_cost								find_cheapest(t_stack *a, t_stack *b);
 void								execute_rotations(t_stack *a, t_stack *b,
 										t_op_list *ops, t_cost *c);
+void								set_cost_directions(t_cost *c, t_stack *a,
+										t_stack *b);
+int									total_cost(t_cost *c);
+int									abs_val(int n);
 
 // utils sort
 void								print_array(int *arr, int len);
@@ -374,20 +378,31 @@ void								bubble(int *arr, int len);
 void								swap_array(int *a, int *b);
 int									*copy_values(t_stack *stk);
 int									*init_array(int *arr, int len, int val);
-int									*lis(int *arr, int len_arr, int *len_lis);
+
 // size_t find_index(int val, int *arr, int len);
 // size_t								find_index(int *sorted, size_t len,
 //  										int value);
 
-int									add_index_node(t_stack *stk);
-t_bool								is_in_lis(int val, int *arr, int len);
-void								add_lis_to_nodes(t_stack *stk);
+// ===== helpers lis algo ====
+// int									*lis(int *arr, int len_arr,
+// size_t *len_lis,
+// 										size_t *best_pos);
+void								add_index_node(t_stack *stk);
+// int									is_in_lis(int val, int *arr,
+//	size_t len);
+size_t								add_lis_to_nodes(t_stack *stk,
+										size_t *best_pos);
 size_t								find_min_ptr_pos(t_stack *stk,
 										t_node **ptr_min);
 int									is_sorted_circular(t_stack *stk);
 void								algo_lis(void);
 void								print_array(int *arr, int len);
 int									*copy_values(t_stack *stk);
+t_cost								find_cheapest_non_lis(t_stack *a,
+										t_stack *b);
+int									*get_lis(int *arr, int n, size_t *len_lis,
+										size_t *best_pos);
+size_t								find_best_lis(t_stack *stk);
 // medium
 void								lis_insertion_algo(t_stack *a, t_stack *b,
 										t_op_list *ops);

@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 23:08:07 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/04 17:02:26 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/05 15:20:23 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	insertion_sort(t_stack *a, t_stack *b, t_op_list *ops)
 		sort_three(a, ops); // petit tri hardcode
 		return ;
 	}
+	add_index_node(a);
 	// assign_indices(a);// normalise en 0..n-1 (plus simple a comparer) voir indexing.c
 	// on envoie des elements de a vers b tant qu'il en reste plus de 3
 	// pourquoi 3 ?
@@ -92,7 +93,7 @@ void	insertion_sort(t_stack *a, t_stack *b, t_op_list *ops)
 	// pour repartir sur une base propre avant de reinserer b.
 	while (a->length > 3)
 		push_cheapest_to_b(a, b, ops);
-			// construit b en ordre decroissant tout le coeur du truc
-	sort_three(a, ops);                // trie les 3 derniers
+	// construit b en ordre decroissant tout le coeur du truc
+	sort_three(a, ops); // trie les 3 derniers
 	push_all_to_a(a, b, ops);
 }

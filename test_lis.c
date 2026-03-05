@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 15:12:31 by mberraho          #+#    #+#             */
-/*   Updated: 2026/03/04 13:55:51 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/05 18:09:23 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,32 @@ void	test_is_sorted_circular(void)
 	printf("======================================================================\n\n");
 }
 
+void	test_find_best_lis(void)
+{
+	t_stack	*a;
+	size_t	pos_best_lis;
+
+	printf("============= TEST medium_algo.c: find_min_pos ==================\n");
+	a = new_stack(A);
+	stack_add_back(a, new_node(13));
+	stack_add_back(a, new_node(7));
+	stack_add_back(a, new_node(6));
+	stack_add_back(a, new_node(0));
+	stack_add_back(a, new_node(-10));
+	stack_add_back(a, new_node(-6));
+	stack_add_back(a, new_node(5));
+	stack_add_back(a, new_node(2));
+	stack_add_back(a, new_node(-1));
+	stack_add_back(a, new_node(1));
+	stack_add_back(a, new_node(8));
+	stack_add_back(a, new_node(9));
+	stack_add_back(a, new_node(3));
+	pos_best_lis = find_best_lis(a);
+	printf("best head position for lis is %ld\n", pos_best_lis);
+	print_stack(a, "A");
+	clear_stack(&a);
+}
+
 int	main(void)
 {
 	printf("%s", BLUE);
@@ -119,8 +145,9 @@ int	main(void)
 	printf("%s\n", NC);
 	/* Call tests functions*/
 	// test_find_min_pos();
-	test_is_sorted_circular();
-	algo_lis();
+	// test_is_sorted_circular();
+	// algo_lis();
+	test_find_best_lis();
 	printf("\n%s", BLUE);
 	printf("╔════════════════════════════════════════════════╗\n");
 	printf("║              Test Results                      ║\n");

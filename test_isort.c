@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 13:34:30 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/04 17:03:12 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/05 20:26:45 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #define BLUE "\033[0;34m"
 #define NC "\033[0m"
 
-#define N 1000000
+#define N 1000
 
 static int	g_tests_passed = 0;
 static int	g_tests_failed = 0;
@@ -265,13 +265,13 @@ size_t	bench_sort(int *vals, int count, const char *label, run_algo algo)
 	a = make_stack(vals, count, A);
 	b = new_stack(B);
 	ops = new_op_list();
-	print_stack(a, "A before sort");
+	// print_stack(a, "A before sort");
 	algo(a, b, ops);
-	print_stack(a, "A sorted");
-	print_index_stack(a, "A rank sorted");
+	// print_stack(a, "A sorted");
+	// print_index_stack(a, "A rank sorted");
 	n_ops = ops->count;
 	print_test_result(label, is_in_order(a) && is_empty_stack(b));
-	print_stack(b, "B after sort");
+	// print_stack(b, "B after sort");
 	print_op_count(ops);
 	clear_stack(&a);
 	clear_stack(&b);
@@ -419,7 +419,7 @@ int	main(void)
 	// test_basic_cases(insertion_sort);
 	// test_10_random(insertion_sort);
 	// test_100_random(insertion_sort);
-	// test_500_random(insertion_sort);
+	test_500_random(insertion_sort);
 	// printf("==================================================\n");
 	// printf("       MEDIUM SORT - Test Suite                 \n");
 	// printf("       LIS-optimized with rr/rrr                 \n");

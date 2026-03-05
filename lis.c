@@ -1,4 +1,3 @@
-
 // https://www.youtube.com/watch?v=cjWnW0hdF1Y
 // https://cp-algorithms.com/dynamic_programming/longest_increasing_subsequence.html
 #include "ft_printf.h"
@@ -35,24 +34,41 @@ int	*init_array(int *arr, int len, int val)
 	return (arr);
 }
 
-int	*lis(int *arr, int len_arr, int *len_lis)
+static int	is_in_lis(int val, int *arr, size_t len)
 {
-	int	*d;
-	int	*p;
-	int	*subseq;
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		if (val == arr[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+static void	mark_lis_nodes(t_stack *stk, int *lis, size_t len)
+{
+	t_node	*node;
+	size_t	i;
+
+	node = stk->head;
+	i = 0;
+	while (i < stk->length)
+	{
+		node->is_lis = is_in_lis(node->value, lis, len);
+		node = node->next;
+		i++;
+	}
+}
+
+static void	fill_dp(int *arr, int n, int *d, int *p)
+{
 	int	i;
 	int	j;
-	int	ans;
-	int	pos;
-	int	end;
 
-	d = NULL;
-	ans = 0;
-	pos = 0;
 	i = 0;
-	d = init_array(d, len_arr, 1);
-	p = init_array(d, len_arr, -1);
-	while (i < len_arr)
+	while (i < n)
 	{
 		j = 0;
 		while (j < i)
@@ -66,71 +82,83 @@ int	*lis(int *arr, int len_arr, int *len_lis)
 		}
 		i++;
 	}
+}
+
+static int	find_best_index(int *d, int n)
+{
+	int	i;
+	int	best;
+	int	pos;
+
 	i = 1;
-	ans = d[0];
-	while (i < len_arr)
+	best = d[0];
+	pos = 0;
+	while (i < n)
 	{
-		if (d[i] > ans)
+		if (d[i] > best)
 		{
-			ans = d[i];
+			best = d[i];
 			pos = i;
 		}
 		i++;
 	}
-	printf("lis length is %d\n", ans);
-	*len_lis = ans;
-	subseq = malloc(sizeof(int) * ans);
-	if (!subseq)
-		return (NULL);
-	end = ans - 1;
-	while (pos != -1)
-	{
-		subseq[end] = arr[pos];
-		pos = p[pos];
-		end--;
-	}
-	free(d);
-	free(p);
-	// print_array(subseq, ans);
-	return (subseq);
+	return (pos);
 }
 
-t_bool	is_in_lis(int val, int *arr, int len)
+static int	*rebuild_lis(int *arr, int *p, int pos, int len)
 {
+	int	*seq;
 	int	i;
 
-	i = 0;
-	while (i < len)
+	seq = malloc(sizeof(int) * len);
+	if (!seq)
+		return (NULL);
+	i = len - 1;
+	while (pos != -1)
 	{
-		if (val == arr[i])
-			return (TRUE);
-		i++;
+		seq[i--] = arr[pos];
+		pos = p[pos];
 	}
-	return (FALSE);
+	return (seq);
 }
 
-int	add_lis_to_nodes(t_stack *stk)
+int	*get_lis(int *arr, int n, size_t *len_lis, size_t *best_pos)
 {
-	int		*arr;
-	size_t	i;
-	int		len_lis;
-	int		*lis_subseq;
-	t_node	*ptr_node;
+	int	*d;
+	int	*p;
+	int	pos;
+	int	*seq;
 
-	len_lis = 0;
-	i = 0;
+	d = init_array(NULL, n, 1);
+	p = init_array(NULL, n, -1);
+	if (!d || !p)
+		return (NULL);
+	fill_dp(arr, n, d, p);
+	pos = find_best_index(d, n);
+	*len_lis = d[pos];
+	*best_pos = (size_t)pos;
+	seq = rebuild_lis(arr, p, pos, d[pos]);
+	free(d);
+	free(p);
+	return (seq);
+}
+
+size_t	add_lis_to_nodes(t_stack *stk, size_t *best_pos)
+{
+	int *arr;
+	int *lis;
+	size_t len;
+
 	if (!stk || stk->length < 2 || !stk->head)
 		return (0);
 	arr = copy_values(stk);
-	lis_subseq = lis(arr, stk->length, &len_lis);
-	ptr_node = stk->head;
-	while (i < stk->length)
-	{
-		ptr_node->is_lis = is_in_lis(ptr_node->value, lis_subseq, len_lis);
-		ptr_node = ptr_node->next;
-		i++;
-	}
-	free(lis_subseq);
+	if (!arr)
+		return (0);
+	lis = get_lis(arr, stk->length, &len, best_pos);
+	if (!lis)
+		return (free(arr), 0);
+	mark_lis_nodes(stk, lis, len);
+	free(lis);
 	free(arr);
-	return (len_lis);
+	return (len);
 }

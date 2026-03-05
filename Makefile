@@ -6,7 +6,7 @@
 #    By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 09:12:00 by yasmine.aic       #+#    #+#              #
-#    Updated: 2026/03/04 16:45:24 by mberraho         ###   ########.fr        #
+#    Updated: 2026/03/05 17:29:57 by mberraho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,7 @@ MAIN_STRATEGY  = main_strategy.c
 SRCS_PUSH_SWAP   =  $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PUSH_SWAP) 
 SRCS_OP_TEST     = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(MAIN_OP_TEST)
 SRCS_PARSER_TEST = $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PARSER_TEST)
-SRCS_LIS_TEST = $(HEADER) $(STACK_SRCS) $(OPS_SRCS) $(LIS_SRCS) $(MAIN_LIS_TEST)
+SRCS_LIS_TEST = $(HEADER) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(SORT_SRCS) $(LIS_SRCS) $(MAIN_LIS_TEST)
 SRCS_ISORT_TEST  = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(SORT_SRCS) $(LIS_SRCS) $(MAIN_ISORT_TEST)
 SRCS_MAIN_STRATEGY = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(DISORDER_SRCS)  $(SORT_SRCS) $(LIS_SRCS) $(STRAT_SRCS) $(MAIN_STRATEGY)
 

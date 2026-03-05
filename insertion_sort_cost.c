@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 22:59:23 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/02 17:22:25 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/05 17:26:29 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 // donc c'est plus court par l'autre cote si on a divise par 2 la taille
 // Les éléments du groupe "proche du bas" → coût élevé (mais négatif = court)
 // donc rra;
-static void	set_cost_directions(t_cost *c, t_stack *a, t_stack *b)
+void	set_cost_directions(t_cost *c, t_stack *a, t_stack *b)
 {
 	if (c->pos_a <= a->length / 2)
 		c->cost_a = (int)c->pos_a;
@@ -35,7 +35,7 @@ static void	set_cost_directions(t_cost *c, t_stack *a, t_stack *b)
 		c->cost_b = -((int)(b->length - c->pos_b));
 }
 // helper func pour verifier jusement si n est positif ou negatif
-static int	abs_val(int n)
+int	abs_val(int n)
 {
 	if (n < 0)
 		return (-n);
@@ -58,7 +58,7 @@ static int	abs_val(int n)
 **   si ca <= cb : on garde cb (multiplié par 1), ca devient 0
 **   une seule valeur survit → c'est le maximum ! ^^
 */
-static int	total_cost(t_cost *c)
+int	total_cost(t_cost *c)
 {
 	int	ca;
 	int	cb;
