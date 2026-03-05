@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insertion_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
+/*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/26 23:08:07 by yasmine.aichi     #+#    #+#             */
-/*   Updated: 2026/02/28 01:26:27 by yasmine.aichi    ###   ########.fr       */
+/*   Created: 2026/02/26 23:08:07 by yasmine.aic       #+#    #+#             */
+/*   Updated: 2026/03/04 19:19:24 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

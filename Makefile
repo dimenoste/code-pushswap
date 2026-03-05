@@ -6,7 +6,7 @@
 #    By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 09:12:00 by yasmine.aic       #+#    #+#              #
-#    Updated: 2026/03/03 14:54:00 by yasmine.aichi    ###   ########.fr        #
+#    Updated: 2026/03/04 18:45:00 by yasmine.aichi    ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ NAME_OP_TEST    = operations
 NAME_PARSER_TEST = parser
 NAME_LIS = lis
 NAME_ISORT_TEST  = isort
+NAME_MAIN_STRATEGY = strategy
 
 OBJ_DIR = obj
 
@@ -30,6 +31,7 @@ STACK_SRCS = stack_init.c \
              stack_ops.c \
              stack_helpers.c \
 			 indexing.c \
+			 _sort_array.c
 
 
 # fichiers sources des operations
@@ -65,8 +67,7 @@ PARSER_SRCS = init_parser.c \
 	reactions_WhenInOption2.c \
 	reactions_WhenInInvalid.c \
 	get_options.c \
-	classify_input.c \
-	ft_putstr.c
+	classify_input.c 
 
 # --- Module Disorder : calcul du desordre pour la strategie adaptive ---
 DISORDER_SRCS = disorder.c
@@ -74,7 +75,11 @@ DISORDER_SRCS = disorder.c
 SORT_SRCS = insertion_sort.c \
 			insertion_sort_utils.c \
 			insertion_sort_helpers.c \
-            insertion_sort_cost.c
+            insertion_sort_cost.c \
+			radix.c \
+			bench_print.c
+
+STRAT_SRCS = strategy.c
 
 PRINTF_SRCS = ft_printf.c \
 			ft_putnbr.c \
@@ -90,13 +95,17 @@ MAIN_LIS_TEST   = test_lis.c
 MAIN_OP_TEST     = test_operations.c
 MAIN_PARSER_TEST = test_parser.c
 MAIN_ISORT_TEST  = test_isort.c
+MAIN_STRATEGY  = main_strategy.c
 
 # Sources pour chaque executable
 SRCS_PUSH_SWAP   =  $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PUSH_SWAP) 
 SRCS_OP_TEST     = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(MAIN_OP_TEST)
 SRCS_PARSER_TEST = $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PARSER_TEST)
 SRCS_LIS_TEST = $(HEADER) $(STACK_SRCS) $(OPS_SRCS) $(LIS_SRCS) $(MAIN_LIS_TEST)
-SRCS_ISORT_TEST  = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(SORT_SRCS) $(MAIN_ISORT_TEST)
+SRCS_ISORT_TEST  = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(SORT_SRCS) $(LIS_SRCS) $(MAIN_ISORT_TEST)
+SRCS_MAIN_STRATEGY = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(DISORDER_SRCS)  $(SORT_SRCS) $(STRAT_SRCS) $(MAIN_STRATEGY)
+
+
 
 OBJS_PUSH_SWAP   = $(SRCS_PUSH_SWAP:%.c=$(OBJ_DIR)/%.o)
 OBJS_OP_TEST     = $(SRCS_OP_TEST:%.c=$(OBJ_DIR)/%.o)
@@ -104,6 +113,8 @@ OBJS_PARSER_TEST = $(SRCS_PARSER_TEST:%.c=$(OBJ_DIR)/%.o)
 OBJS_LIS_TEST = $(SRCS_LIS_TEST:%.c=$(OBJ_DIR)/%.o)
 
 OBJS_ISORT_TEST  = $(SRCS_ISORT_TEST:%.c=$(OBJ_DIR)/%.o)
+
+OBJS_MAIN_STRATEGY  = $(SRCS_MAIN_STRATEGY:%.c=$(OBJ_DIR)/%.o)
 
 CC      = cc
 CFLAGS  = -Wall -Wextra -Werror -g
@@ -149,6 +160,12 @@ $(NAME_ISORT_TEST): $(OBJS_ISORT_TEST)
 	@echo -e ${GREEN}✓ $(NAME_ISORT_TEST) compile !${NC}
 
 
+# -- Compilation du test des parser + algo + strategy --
+$(NAME_MAIN_STRATEGY): $(OBJS_MAIN_STRATEGY)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS_MAIN_STRATEGY) -g -o $(NAME_MAIN_STRATEGY)
+	@echo -e ${GREEN}✓ $(NAME_MAIN_STRATEGY) compile !${NC}
+
+
 # general push_swap dir of .o
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
@@ -190,6 +207,14 @@ test_isort: $(NAME_ISORT_TEST)
 	@./$(NAME_ISORT_TEST)
 	@echo -e ${GREEN}✓ insertion_sort tests finished${NC}
 
+# lance le test sur les algos branche au parser 
+main_strategy : $(NAME_MAIN_STRATEGY)
+	@echo -e ${YELLOW}========================================${NC}
+	@echo -e ${YELLOW} Running  algo strategy test suite...  ${NC}
+	@echo -e ${YELLOW}========================================${NC}
+	@./$(NAME_MAIN_STRATEGY)
+	@echo -e ${GREEN}✓ run algo strategy tests finished${NC}
+
 # Valgrind sur le test des operations
 valgrind: $(NAME_OP_TEST)
 	@echo -e ${YELLOW}✓ Valgrind en cours...${NC}
@@ -204,6 +229,11 @@ valgrind_isort: $(NAME_ISORT_TEST)
 valgrind_lis: $(NAME_LIS)
 	@echo -e "\033[0;33m✓ Valgrind (lis_sort) en cours...\033[0m"
 	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(NAME_LIS)
+
+#Valgrind sur strategy and algos
+valgrind_algo: $(NAME_MAIN_STRATEGY)
+	@echo -e "\033[0;33m✓ Valgrind (lis_sort) en cours...\033[0m"
+	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(NAME_MAIN_STRATEGY)
 	
 norm:
 	@norminette $(SRCS_PUSH_SWAP)
@@ -228,7 +258,7 @@ clean:
 	@echo -e ${GREEN}✓ Fichiers objets supprimes${NC}
 
 fclean: clean
-	@rm -f $(NAME) $(NAME_OP_TEST) $(NAME_PARSER_TEST) $(NAME_ISORT_TEST) $(NAME_LIS) 
+	@rm -f $(NAME) $(NAME_OP_TEST) $(NAME_PARSER_TEST) $(NAME_ISORT_TEST) $(NAME_LIS) $(NAME_ISORT_TEST) $(NAME_MAIN_STRATEGY)
 	@rm -f $(VALGRIND_OUTPUT) vgcore* *.out
 	@echo -e ${GREEN}✓ Executables supprimes${NC}
 	

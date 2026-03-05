@@ -1,15 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bench_print.c                                            :+:      :+:    :+:   */
+/*   bench_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/04 15:04:52 by yasmine.aichi     #+#    #+#             */
-/*   Updated: 2026/03/04 16:03:54 by yasmine.aichi    ###   ########.fr       */
+/*   Created: 2026/03/04 18:32:34 by yasmine.aichi     #+#    #+#             */
+/*   Updated: 2026/03/04 19:14:26 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_algo.h"
+#include "ft_stack.h"
 #include "push_swap.h"
 
 static size_t	count_op(t_op_list *ops, t_op_type type)
@@ -99,4 +101,18 @@ void	print_bench_ops(t_op_list *ops)
 	write(2, " rrr: ", 6);
 	write_int_fd(2, (int)count_op(ops, OP_RRR));
 	write(2, "\n", 1);
+}
+void	display_bench(t_op_list *ops, char *strategy, float disorder)
+{
+	if (!ops)
+		return ;
+	write(2, "[bench] disorder: ", 18);
+	write_disorder_fd(2, disorder);
+	write(2, "%\n", 2);
+	write(2, "[bench] strategy: ", 18);
+	bench_strategy_info(strategy);
+	write(2, "\n", 1);
+	write(2, "[bench] total_ops: ", 19);
+	write_int_fd(2, (int)ops->count);
+	print_bench_ops(ops);
 }

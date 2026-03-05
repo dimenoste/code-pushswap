@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:39:32 by mberraho          #+#    #+#             */
-/*   Updated: 2026/03/01 16:13:47 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/04 14:55:24 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_stack(t_stack *stack, const char *name)
 
 	if (is_empty_stack(stack))
 	{
-		printf("empty stack\n");
+		printf("%s : empty stack\n", name);
 		return ;
 	}
 	printf("[VALUES of Stack %s, length=%zu]: ", name, stack->length);
@@ -46,7 +46,7 @@ void	print_index_stack(t_stack *stack, const char *name)
 		printf("empty stack\n");
 		return ;
 	}
-	printf("[RANKS  of Stack %s, length=%zu]: ", name, stack->length);
+	printf("[INDEX  of Stack %s, length=%zu]: ", name, stack->length);
 	current = stack->head;
 	i = 0;
 	while (i < stack->length)

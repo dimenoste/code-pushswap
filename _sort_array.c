@@ -45,7 +45,7 @@ size_t	find_index(int val, int *arr, int len)
 	}
 	return (i);
 }
-void	add_index_node(t_stack *stk)
+void	add_index_node_mehdi(t_stack *stk)
 {
 	t_node	*ptr_node;
 	size_t	i;
