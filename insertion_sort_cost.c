@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 22:59:23 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/05 17:26:29 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/05 21:46:29 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,8 @@ int	abs_val(int n)
 		return (-n);
 	return (n);
 }
-/*
-** Ici du coup on calcule le vrai nombre d'operations qu'on va faire
-**
-**
-** si les deux positifs (rotate forward) → on va utilisee rr
-**   donc au lieu de faire ca operations PUIS cb operations
-**   on peut faire les deux ensemble → coût = max(ca, cb)
 
+/*
  si les deux négatifs (rotate backward) → on va utiliser rrr
 **   même logique, coût = max(ca, cb)
 **
@@ -65,33 +59,13 @@ int	total_cost(t_cost *c)
 
 	ca = abs_val(c->cost_a);
 	cb = abs_val(c->cost_b);
-	// ils sont tout les deux positif
 	if (c->cost_a > 0 && c->cost_b > 0)
-		return (((ca > cb) * ca) + ((ca <= cb) * cb));
-	// ils sont tout les deux negatif meme operation booleenne
+		return ((ca > cb) * ca + (ca <= cb) * cb);
 	if (c->cost_a < 0 && c->cost_b < 0)
-		return (((ca > cb) * ca) + ((ca <= cb) * cb));
+		return ((ca > cb) * ca + (ca <= cb) * cb);
 	return (ca + cb);
 }
-/* ici on teste TOUS les elements de a un par un.
-** pour chacun on se pose la question :
-** "si je l'envoie dans b, ça me coute combien d'operation ?"
-**
-** pour chaque element :
-**   - pos_a = ou il est dans a
-**   - pos_b = ou il devrait aller dans b (via find_insert_pos_b)
-**   - on calcule le sens le plus court (set_cost_directions)
-**   - on calcule le vrai cout total (avec combo rr / rrr possible)
-**
-** a la fin on garde juste celui qui coute le moins cher.^^
-**
-** donc cette fonction ne fait AUCUNE operation,
-** elle fait juste de la strategie pour optimiser
-j'avais pas le chgoix comment tu veux passer de 31000 ops a 5000
-**
-** c'est elle qui decide quel element on va push.
-** regarde push_cheapest_to_b pour voir ou c'est utilise.
-*/
+
 t_cost	find_cheapest(t_stack *a, t_stack *b)
 {
 	t_cost	best;
@@ -116,26 +90,6 @@ t_cost	find_cheapest(t_stack *a, t_stack *b)
 	return (best);
 }
 
-/*
-** ici on execute vraiment les rotations qu'on a calcule avant\
-franchement on s'est pris la tete avec tout ce calcul de cout
-pour cette fonction mdrrr vu que les rotate ces nos ops
-les moins "cher"
- idee simple :
- si a et b doivent tourner dans le meme sens
- on combine avec rr ou rrr pour economiser des coups.
-
-** phase 1 :
-**   les deux positifs → rr (on avance les deux en meme temps)
-
-** phase 2 :
-**   les deux negatifs → rrr (on recule les deux en meme temps)*
-** phase 3 :
-**   ce qu'il reste on le fait separement
-**   (quand un des deux est deja bien place ou sens oppose)
-** donc find_cheapest choisit la strategie,
-** execute_rotations applique vraiment les mouvements.
-*/
 void	execute_rotations(t_stack *a, t_stack *b, t_op_list *ops, t_cost *c)
 {
 	while (c->cost_a > 0 && c->cost_b > 0)

@@ -1,10 +1,6 @@
 #include "push_swap.h"
 
-typedef void	(*rotate_f)(t_stack *stack, t_op_list *ops);
 
-// function to find where is the minimum position of the stack list
-// 0 indexed value (index 0). Position is from 1 to len of stack
-// pass a ptr to node by adress to get the min node
 size_t	find_min_ptr_pos(t_stack *stk, t_node **ptr_min)
 {
 	size_t	i;
@@ -66,10 +62,7 @@ int	is_sorted_circular(t_stack *stk)
 	find_min_ptr_pos(stk, &ptr_min);
 	stk->head = ptr_min;
 	is_sorted = is_in_order(stk);
-	// printf("result is in order (1 for order or empty) : %d\n", is_sorted);
-	// print_stack(stk, "a should be in order");
-	stk->head = head_orig; // reset the head at the original node
-	// print_stack(stk, "a should be like before");
+	stk->head = head_orig;
 	return (is_sorted);
 }
 void	rotate_until_sorted(t_stack *stk, t_op_list *ops)
@@ -81,19 +74,12 @@ void	rotate_until_sorted(t_stack *stk, t_op_list *ops)
 
 	if (!stk || !stk->head || stk->length < 2 || !is_sorted_circular(stk))
 	{
-		// printf("error\n");
 		return ;
 	}
-	// print_stack(stk, "A from rotate until sorted");
 	ptr_min = stk->head;
 	pos_min = find_min_ptr_pos(stk, &ptr_min);
-	// printf("pos min %zu\n", pos_min);
 	if (pos_min == 0)
-	// pos min should be from 1 to len of stack
 	{
-		// printf("error,
-		// ptr should point to node with 0 index and min value\n");
-		// printf("index found for the min is %zu\n", ptr_min->index);
 		return ;
 	}
 	nb_rotate = 0;
@@ -110,254 +96,11 @@ void	rotate_until_sorted(t_stack *stk, t_op_list *ops)
 	while (nb_rotate > 0)
 	{
 		rot(stk, ops);
-		// print_stack(stk, "A from loop in rotate until sorted");
 		nb_rotate--;
 	}
-	// print_stack(stk, "A should reotated ordered");
 	return ;
 }
 
-// void	algo_lis(void)
-// {
-// 	t_stack		*a;
-// 	t_stack		*b;
-// 	t_op_list	*ops;
-// 	size_t		max_a;
-// 	int			nb_lis;
-
-// 	// size_t		len_a;
-// 	printf("============= TEST medium_algo.c: algo_lis ==================\n");
-// 	ops = new_op_list();
-// 	// {8, 3, 4, 6, 5, 2, 0, 7, 9, 1};
-// 	// 398 → 938 → 634 → 200 → 987 → 77 → 282 → 768 → 441 → 395
-// 	a = new_stack(A);
-// 	stack_add_back(a, new_node(398));
-// 	stack_add_back(a, new_node(938));
-// 	stack_add_back(a, new_node(634));
-// 	stack_add_back(a, new_node(200));
-// 	stack_add_back(a, new_node(987));
-// 	stack_add_back(a, new_node(77));
-// 	stack_add_back(a, new_node(282));
-// 	stack_add_back(a, new_node(768));
-// 	stack_add_back(a, new_node(441));
-// 	stack_add_back(a, new_node(395));
-// 	if (a->length < 2)
-// 		return ;
-// 	// add lis and index
-// 	nb_lis = add_lis_to_nodes(a);
-// 	printf("====");
-// 	assign_indices(a);
-// 	// create stack b
-// 	b = new_stack(B);
-// 	// printf("================================== set up data before sort ====================================\n\n");
-// 	// print_stack(a, "A");
-// 	// print_stack(b, "B");
-// 	// print_index_stack(a, "A");
-// 	// print_index_stack(b, "B");
-// 	// print_lis_stack(a, "A");
-// 	// print_lis_stack(b, "B");
-// 	printf("================================== insert non lis dans B ====================================\n\n");
-// 	// push all non lis elements to B
-// 	// len_a = a->length;
-// 	while (nb_lis > 0)
-// 	{
-// 		if (a->head->is_lis == 0)
-// 		{
-// 			push(a, b, ops);
-// 			nb_lis--;
-// 		}
-// 		else
-// 			rotate(a, ops);
-// 	}
-// 	printf("========================= after insert dans B ============================================\n\n");
-// 	print_stack(a, "A");
-// 	print_stack(b, "B");
-// 	// print_lis_stack(a, "A");
-// 	// print_lis_stack(b, "B");
-// 	print_index_stack(a, "A");
-// 	print_index_stack(b, "B");
-// 	printf("========================= reinsertion dans A ============================================\n\n");
-// 	// int i = 5;
-// 	while (b->length > 0) // && i > 0)
-// 	{
-// 		printf("head of a %d\n", a->head->value);
-// 		printf("head of b %d\n", b->head->value);
-// 		print_index_stack(a, "A");
-// 		print_index_stack(b, "B");
-// 		max_a = get_max_index(a);
-// 		if (max_a < b->head->index)
-// 		{
-// 			push(b, a, ops);
-// 			rotate(a, ops);
-// 			print_index_stack(a, " max_a < b->head->index A");
-// 		}
-// 		else
-// 		{
-// 			printf("=== START Rotate until sorted ==\n\n");
-// 			rotate_until_sorted(a, ops);
-// 			print_index_stack(a, "A should be sorted");
-// 			printf("=== END Rotate until sorted ==\n\n");
-// 			while (a->head->index < b->head->index)
-// 			{
-// 				print_index_stack(a, " a->head->index < b->head->index A");
-// 				rotate(a, ops);
-// 			}
-// 			if (a->head->index > b->head->index)
-// 			{
-// 				push(b, a, ops);
-// 				print_index_stack(a, " a->head->index > b->head->index A");
-// 			}
-// 		}
-// 		printf("=== after poush from b to a ==\n\n");
-// 		print_index_stack(a, "A");
-// 		print_index_stack(b, "B");
-// 		// i--;
-// 	} //// print and clean
-// 	printf("=== START Rotate until sorted ==\n\n");
-// 	rotate_until_sorted(a, ops);
-// 	print_index_stack(a, "A should be sorted");
-// 	printf("=== END Rotate until sorted ==\n\n");
-// 	printf("Number of ops :%zu\n", ops->count);
-// 	printf("=====================================================================\n\n");
-// 	print_stack(a, "A");
-// 	print_stack(b, "B");
-// 	clear_stack(&a);
-// 	clear_stack(&b);
-// 	clear_op_list(&ops);
-// 	printf("======================================================================\n\n");
-// }
-
-// void	lis_insertion_algo(t_stack *a, t_stack *b, t_op_list *ops)
-// {
-// 	size_t	len_a;
-// 	size_t	max_a;
-
-// 	len_a = a->length;
-// 	if (len_a <= 1)
-// 		return ;
-// 	if (len_a == 2)
-// 	{
-// 		sort_two(a, ops);
-// 		return ;
-// 	}
-// 	if (len_a == 3)
-// 	{
-// 		sort_three(a, ops); // petit tri hardcode
-// 		return ;
-// 	}
-// 	// add lis and index
-// 	add_lis_to_nodes(a);
-// 	printf("====");
-// 	assign_indices(a);
-// 	// printf("================================== set up data before sort ====================================\n\n");
-// 	// print_stack(a, "A");
-// 	// print_stack(b, "B");
-// 	// print_index_stack(a, "A");
-// 	// print_index_stack(b, "B");
-// 	// print_lis_stack(a, "A");
-// 	// print_lis_stack(b, "B");
-// 	// printf("================================== insert non lis dans B ====================================\n\n");
-// 	// push all non lis elements to B
-// 	while (len_a > 0)
-// 	{
-// 		if (a->head->is_lis == 0)
-// 			push(a, b, ops);
-// 		else
-// 			rotate(a, ops);
-// 		len_a--;
-// 	}
-// 	// printf("========================= after insert dans B ============================================\n\n");
-// 	// print_stack(a, "A");
-// 	// print_stack(b, "B");
-// 	// // print_lis_stack(a, "A");
-// 	// // print_lis_stack(b, "B");
-// 	// print_index_stack(a, "A");
-// 	// print_index_stack(b, "B");
-// 	// printf("========================= reinsertion dans A ============================================\n\n");
-// 	// int i = 5;
-// 	while (b->length > 0) // && i > 0)
-// 	{
-// 		// printf("head of a %d\n", a->head->value);
-// 		// printf("head of b %d\n", b->head->value);
-// 		// print_index_stack(a, "A");
-// 		// print_index_stack(b, "B");
-// 		max_a = get_max_index(a);
-// 		if (max_a < b->head->index)
-// 		{
-// 			push(b, a, ops);
-// 			rotate(a, ops);
-// 			print_index_stack(a, " max_a < b->head->index A");
-// 		}
-// 		else
-// 		{
-// 			// printf("=== START Rotate until sorted ==\n\n");
-// 			rotate_until_sorted(a, ops);
-// 			// print_index_stack(a, "A should be sorted");
-// 			// printf("=== END Rotate until sorted ==\n\n");
-// 			while (a->head->index < b->head->index)
-// 			{
-// 				// print_index_stack(a, " a->head->index < b->head->index A");
-// 				rotate(a, ops);
-// 			}
-// 			if (a->head->index > b->head->index)
-// 			{
-// 				push(b, a, ops);
-// 				// print_index_stack(a, " a->head->index > b->head->index A");
-// 			}
-// 		}
-// 		// printf("=== after poush from b to a ==\n\n");
-// 		// print_index_stack(a, "A");
-// 		// print_index_stack(b, "B");
-// 		// i--;
-// 	}
-// 	//// print and clean
-// 	// printf("=== START Rotate until sorted ==\n\n");
-// 	rotate_until_sorted(a, ops);
-// 	// print_index_stack(a, "A should be sorted");
-// 	// printf("=== END Rotate until sorted ==\n\n");
-// 	// printf("Number of ops :%zu\n", ops->count);
-// 	// printf("=====================================================================\n\n");
-// 	// print_stack(a, "A");
-// 	// print_stack(b, "B");
-// 	// clear_stack(&a);
-// 	// clear_stack(&b);
-// 	// clear_op_list(&ops);
-// 	// printf("======================================================================\n\n");
-// }
-
-// static void	set_cost_directions(t_cost *c, t_stack *a, t_stack *b)
-// {
-// 	if (c->pos_a <= a->length / 2)
-// 		c->cost_a = (int)c->pos_a;
-// 	else
-// 		c->cost_a = -((int)(a->length - c->pos_a));
-// 	if (c->pos_b <= b->length / 2)
-// 		c->cost_b = (int)c->pos_b;
-// 	else
-// 		c->cost_b = -((int)(b->length - c->pos_b));
-// }
-// // helper func pour verifier jusement si n est positif ou negatif
-// static int	abs_val(int n)
-// {
-// 	if (n < 0)
-// 		return (-n);
-// 	return (n);
-// }
-// static int	total_cost(t_cost *c)
-// {
-// 	int	ca;
-// 	int	cb;
-
-// 	ca = abs_val(c->cost_a);
-// 	cb = abs_val(c->cost_b);
-// 	// ils sont tout les deux positif
-// 	if (c->cost_a > 0 && c->cost_b > 0)
-// 		return (((ca > cb) * ca) + ((ca <= cb) * cb));
-// 	// ils sont tout les deux negatif meme operation booleenne
-// 	if (c->cost_a < 0 && c->cost_b < 0)
-// 		return (((ca > cb) * ca) + ((ca <= cb) * cb));
-// 	return (ca + cb);
-// }
 
 t_cost	find_cheapest_non_lis(t_stack *a, t_stack *b)
 {
@@ -385,77 +128,6 @@ t_cost	find_cheapest_non_lis(t_stack *a, t_stack *b)
 	}
 	return (best);
 }
-// void	lis_insertion_algo(t_stack *a, t_stack *b, t_op_list *ops)
-// {
-// 	size_t	len_a;
-// 	size_t	nb_lis;
-// 	size_t	non_lis_nb;
-// 	t_cost	best;
-// 	size_t	best_lis_pos;
-
-// 	// int		k;
-// 	len_a = a->length;
-// 	if (len_a <= 1)
-// 		return ;
-// 	if (len_a == 2)
-// 	{
-// 		sort_two(a, ops);
-// 		return ;
-// 	}
-// 	if (len_a == 3)
-// 	{
-// 		sort_three(a, ops); // petit tri hardcode
-// 		return ;
-// 	}
-// 	// add lis and index
-// 	best_lis_pos = 0;
-// 	add_index_node(a);
-// 	best_lis_pos = find_best_lis(a);
-// 	rotate_to_top(a, best_lis_pos, ops);
-// 	nb_lis = add_lis_to_nodes(a, &best_lis_pos);
-// 	non_lis_nb = (a->length - nb_lis);
-// 	printf("==number of lis elemetns %ld==\n", nb_lis);
-// 	// print_stack(a, "A stack");
-// 	// print_index_stack(a, "A index after lis");
-// 	// print_lis_stack(a, "LIS ELEM IN A", nb_lis);
-// 	printf("=====================================================================\n\n");
-// 	b->length = 0;
-// 	// k = 40;
-// 	while (b->length < non_lis_nb)
-// 	{
-// 		// printf("len of B %ld\n", b->length);
-// 		if (a->head->is_lis == 0)
-// 		{
-// 			// push(a, b, ops);
-// 			// best = find_cheapest_non_lis(a, b);
-// 			// // print_stack(a, "A");
-// 			execute_rotations(a, b, ops, &best);
-// 			push(a, b, ops);
-// 		}
-// 		else
-// 			rotate(a, ops);
-// 		// k--;
-// 		// if (k == 0)
-// 		// {
-// 		// 	printf("infinite loop\n");
-// 		// 	return ;
-// 		// }
-// 	}
-// 	// print_stack(a, "A after lis");
-// 	// print_index_stack(a, "A index after lis");
-// 	// print_lis_stack(a, "LIS ELEM IN A", nb_lis);
-// 	// print_stack(b, "B after lis");
-// 	// print_index_stack(b, "B index after lis");
-// 	// print_lis_stack(b, "LIS ELEM IN B", nb_lis);
-// 	printf("=====================================================================\n\n");
-// 	// insertion_sort(a, b, ops);
-// 	// execute_rotations(a, b, ops, &best);
-// 	push_all_to_a(a, b, ops);
-// 	printf("Number of ops :%zu\n", ops->count);
-// 	// printf("=====================================================================\n\n");
-// 	// print_stack(a, "A");
-// 	// print_stack(b, "B");
-// }
 
 static size_t	eval_rot(int *arr, int n, int start)
 {

@@ -69,12 +69,21 @@ int    find_max_bit(unsigned long value)
     }
     return (size);
 }
-//int main()
-//{
-// (...)
-// Works because with indexed values, we are bound by the highest possible value in our list - which is the highest index, e.g size-1
-  //  if (input->complex)
-    //    radix_sort(main_stack, b_stack, out, find_max_bit((main_stack)->size - 1));
-// (...)
-//}
 
+void	radix_sort_algo(t_stack *a, t_stack *b, t_op_list *ops)
+{
+	if (a->length <= 1)
+		return ;
+	if (a->length == 2)
+	{
+		sort_two(a, ops);
+		return ;
+	}
+	if (a->length == 3)
+	{
+		sort_three(a, ops);
+		return ;
+	}
+	assign_indices(a);
+	radix_sort(a, b, ops, find_max_bit(a->length - 1));
+}

@@ -6,16 +6,10 @@
 #    By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 09:12:00 by yasmine.aic       #+#    #+#              #
-#    Updated: 2026/03/05 17:29:57 by mberraho         ###   ########.fr        #
+#    Updated: 2026/03/05 21:48:34 by mberraho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-# TODO
-# ajouter .d
-# ajouter -M
-# ajouter differents .h differents seln les dossiers 
-# https://stackoverflow.com/questions/19114410/what-is-d-file-after-building-with-make
 
 NAME            = push_swap
 NAME_OP_TEST    = operations
@@ -77,7 +71,9 @@ DISORDER_SRCS = disorder.c
 SORT_SRCS = insertion_sort.c \
 			insertion_sort_utils.c \
 			insertion_sort_helpers.c \
-            insertion_sort_cost.c 
+            insertion_sort_cost.c \
+			radix.c \
+			bench_print.c
 
 STRAT_SRCS = strategy.c
 
@@ -103,7 +99,7 @@ SRCS_OP_TEST     = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER
 SRCS_PARSER_TEST = $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PARSER_TEST)
 SRCS_LIS_TEST = $(HEADER) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(SORT_SRCS) $(LIS_SRCS) $(MAIN_LIS_TEST)
 SRCS_ISORT_TEST  = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(SORT_SRCS) $(LIS_SRCS) $(MAIN_ISORT_TEST)
-SRCS_MAIN_STRATEGY = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(DISORDER_SRCS)  $(SORT_SRCS) $(LIS_SRCS) $(STRAT_SRCS) $(MAIN_STRATEGY)
+SRCS_MAIN_STRATEGY = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(DISORDER_SRCS)  $(SORT_SRCS) $(STRAT_SRCS) $(MAIN_STRATEGY)
 
 
 

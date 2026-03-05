@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 13:34:30 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/05 20:26:45 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/05 21:33:55 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -417,9 +417,9 @@ int	main(void)
 	// test_sort_small();
 	// test_visual_sort();
 	// test_basic_cases(insertion_sort);
-	// test_10_random(insertion_sort);
-	// test_100_random(insertion_sort);
-	test_500_random(insertion_sort);
+	 test_10_random(insertion_sort);
+	 test_100_random(insertion_sort);
+	 test_500_random(insertion_sort);
 	// printf("==================================================\n");
 	// printf("       MEDIUM SORT - Test Suite                 \n");
 	// printf("       LIS-optimized with rr/rrr                 \n");
@@ -432,7 +432,8 @@ int	main(void)
 	// test_basic_cases(lis_insertion_algo);
 	// test_100_random(lis_insertion_algo);
 	test_500_random(lis_insertion_algo);
-	// test_10_random(lis_insertion_algo);
+	test_10_random(lis_insertion_algo);
+
 	printf("\n%s", BLUE);
 	printf("==================================================\n");
 	printf("              Test Results                         \n");
