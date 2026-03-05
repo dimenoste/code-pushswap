@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:39:32 by mberraho          #+#    #+#             */
-/*   Updated: 2026/03/04 14:55:24 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/05 16:17:18 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	print_index_stack(t_stack *stack, const char *name)
 	printf("\n");
 }
 
-void	print_lis_stack(t_stack *stack, const char *name)
+void	print_lis_stack(t_stack *stack, const char *name, size_t nb_lis)
 {
 	t_node	*current;
 	size_t	i;
@@ -70,7 +70,7 @@ void	print_lis_stack(t_stack *stack, const char *name)
 		printf("empty stack\n");
 		return ;
 	}
-	printf("[IS_LIS of Stack %s, length=%zu]: ", name, stack->length);
+	printf("[IS_LIS of Stack %s, length=%zu]: ", name, nb_lis);
 	current = stack->head;
 	i = 0;
 	while (i < stack->length)
