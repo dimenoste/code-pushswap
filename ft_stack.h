@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stack.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
+/*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/02 17:46:37 by yasmine.aichi     #+#    #+#             */
-/*   Updated: 2026/03/02 18:22:41 by yasmine.aichi    ###   ########.fr       */
+/*   Created: 2026/03/02 17:46:37 by yasmine.aic       #+#    #+#             */
+/*   Updated: 2026/03/05 21:56:40 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,8 @@ t_node				*stack_first(t_stack *stk);
 void				print_stack(t_stack *stack, const char *name);
 
 void				print_index_stack(t_stack *stack, const char *name);
-void				print_lis_stack(t_stack *stack, const char *name);
+void				print_lis_stack(t_stack *stack, const char *name,
+						size_t nb_lis);
 
 int					is_node_unique(t_stack *stk, t_node *node);
 int					is_in_order(t_stack *stk);

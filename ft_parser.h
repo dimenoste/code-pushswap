@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
+/*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/02 17:50:17 by yasmine.aichi     #+#    #+#             */
-/*   Updated: 2026/03/04 16:27:45 by yasmine.aichi    ###   ########.fr       */
+/*   Created: 2026/03/02 17:50:17 by yasmine.aic       #+#    #+#             */
+/*   Updated: 2026/03/05 22:10:56 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void								init_parser_arg(t_states *mystates,
 int									validate_args(int argc, char *argv[],
 										t_output_parsing *output);
 t_output_parsing					*run_parser(int argc, char *argv[]);
+void								clear_output(t_output_parsing **out);
 
 // 2) State Interface
 typedef struct s_interface
