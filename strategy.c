@@ -88,11 +88,11 @@ void	run_strategy(t_output_parsing *output_parser)
 	if (ops)
 	{
 		//printf("  operations list:\n  ");
-		//print_operations(ops);
+		print_operations(ops);
 	}
 	if (output_parser->bench_found)
 	{
-	display_bench(ops, strat, disorder);
+		display_bench(ops, strat, disorder);
 	}
 	// clear_op_list(&ops);
 }

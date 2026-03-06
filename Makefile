@@ -27,8 +27,7 @@ STACK_SRCS = stack_init.c \
              stack_ops.c \
              stack_helpers.c \
 			 indexing.c \
-			 _sort_array.c
-
+			 array_utils.c
 
 # fichiers sources des operations
 OPS_SRCS = operations_swap.c \
@@ -38,32 +37,35 @@ OPS_SRCS = operations_swap.c \
 
 # fichiers sources des algos
 LIS_SRCS = medium_algo.c \
-			lis.c
+			_sort_array.c \
+			lis.c \
+			lis_utils.c \
+			lis_algo_helpers.c
 #sort_array.c 
 		  
 
 # fichiers sources du parser
 PARSER_SRCS = init_parser.c \
-	run_parser.c \
-	extract_option.c \
-	transitions_functions_parsing.c \
-	transitions_functions_parsing2.c \
-	utils_parsing.c \
-	init_states1.c \
-	init_states2.c \
-	reactions_WhenInStart1.c \
-	reactions_WhenInStart2.c \
-	reactions_WhenInDash1.c \
-	reactions_WhenInDash2.c \
-	reactions_WhenInNumber1.c \
-	reactions_WhenInNumber2.c \
-	reactions_WhenInSpace1.c \
-	reactions_WhenInSpace2.c \
-	reactions_WhenInOption1.c \
-	reactions_WhenInOption2.c \
-	reactions_WhenInInvalid.c \
-	get_options.c \
-	classify_input.c 
+			run_parser.c \
+			extract_option.c \
+			transitions_functions_parsing.c \
+			transitions_functions_parsing2.c \
+			utils_parsing.c \
+			init_states1.c \
+			init_states2.c \
+			reactions_when_in_start1.c \
+			reactions_when_in_start2.c \
+			reactions_when_in_dash1.c \
+			reactions_when_in_dash2.c \
+			reactions_when_in_number1.c \
+			reactions_when_in_number2.c \
+			reactions_when_in_space1.c \
+			reactions_when_in_space2.c \
+			reactions_when_in_option1.c \
+			reactions_when_in_option2.c \
+			reactions_when_in_invalid.c \
+			get_options.c \
+			classify_input.c 
 
 # --- Module Disorder : calcul du desordre pour la strategie adaptive ---
 DISORDER_SRCS = disorder.c
@@ -86,7 +88,7 @@ PRINTF_SRCS = ft_printf.c \
 			ft_printf.h
 #*----
 HEADER = push_swap.h
-MAIN_PUSH_SWAP   = main.c
+MAIN_PUSH_SWAP   = main_strategy.c
 MAIN_LIS_TEST   = test_lis.c
 MAIN_OP_TEST     = test_operations.c
 MAIN_PARSER_TEST = test_parser.c
@@ -94,12 +96,12 @@ MAIN_ISORT_TEST  = test_isort.c
 MAIN_STRATEGY  = main_strategy.c
 
 # Sources pour chaque executable
-SRCS_PUSH_SWAP   =  $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PUSH_SWAP) 
+SRCS_PUSH_SWAP   =   $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(DISORDER_SRCS) $(LIS_SRCS)  $(SORT_SRCS) $(STRAT_SRCS) $(MAIN_STRATEGY)
 SRCS_OP_TEST     = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(MAIN_OP_TEST)
 SRCS_PARSER_TEST = $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PARSER_TEST)
-SRCS_LIS_TEST = $(HEADER) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(SORT_SRCS) $(LIS_SRCS) $(MAIN_LIS_TEST)
-SRCS_ISORT_TEST  = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(SORT_SRCS) $(LIS_SRCS) $(MAIN_ISORT_TEST)
-SRCS_MAIN_STRATEGY = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(DISORDER_SRCS)  $(SORT_SRCS) $(STRAT_SRCS) $(MAIN_STRATEGY)
+SRCS_LIS_TEST = $(HEADER) $(PARSER_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(SORT_SRCS) $(LIS_SRCS) $(MAIN_LIS_TEST)
+SRCS_ISORT_TEST  = $(HEADER) $(PRINTF_SRCS) $(PARSER_SRCS) $(STACK_SRCS) $(OPS_SRCS)  $(DISORDER_SRCS) $(LIS_SRCS)  $(SORT_SRCS) $(STRAT_SRCS) $(MAIN_ISORT_TEST)
+SRCS_MAIN_STRATEGY = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(DISORDER_SRCS) $(LIS_SRCS)  $(SORT_SRCS) $(STRAT_SRCS) $(MAIN_STRATEGY)
 
 
 
@@ -131,7 +133,7 @@ all: $(NAME)
 # 	@$(CC) $(CFLAGS) $(OBJS_PUSH_SWAP) -o $(NAME)
 # 	@echo "$(GREEN)✓ $(NAME) compile !$(NC)"
 $(NAME): $(OBJS_PUSH_SWAP)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS_PUSH_SWAP) _g -o $(NAME)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS_PUSH_SWAP) -g -o $(NAME)
 	@echo -e ${RED}main.c pas encore implemente. Utilise 'make test_ops' ou 'make test_parser'${NC}
 
 # --- Compilation du test des operations ---
