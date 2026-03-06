@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:38:32 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/06 19:01:14 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:06:03 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "ft_parser.h"
 # include "ft_printf.h"
 # include "ft_stack.h"
-//# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
