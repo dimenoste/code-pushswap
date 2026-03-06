@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 16:43:17 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/06 19:04:14 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/06 19:06:44 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	swap_temp(int *a, int *b)
 
 void	bubble(int *arr, int len)
 {
-	int end_idx;
-	int i;
+	int	end_idx;
+	int	i;
 
 	if (!arr || len < 2)
 	{
