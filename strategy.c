@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 16:21:14 by mberraho          #+#    #+#             */
-/*   Updated: 2026/03/06 18:04:25 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:08:01 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_op_list	*run_algo_adaptive(t_stack *stk)
 	t_op_list	*ops;
 
 	disorder = compute_disorder(stk);
-	if (disorder > 0.2)
+	if (disorder < 0.2)
 		ops = run_algo_simple(stk);
 	else if (0.2 <= disorder && disorder < 0.5)
 		ops = run_algo_medium(stk);
