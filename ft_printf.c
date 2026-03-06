@@ -6,7 +6,7 @@
 /*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 18:16:49 by yasmine.aichi     #+#    #+#             */
-/*   Updated: 2026/02/28 03:02:19 by yasmine.aichi    ###   ########.fr       */
+/*   Updated: 2026/03/06 16:52:38 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	handler(char spec, va_list args)
 	return (0);
 }
 
-int	myprintf(const char *format, ...)
+int	printf(const char *format, ...)
 {
 	va_list	args;
 	int		count;

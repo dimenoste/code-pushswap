@@ -1,11 +1,16 @@
-// https://www.youtube.com/watch?v=cjWnW0hdF1Y
-// https://cp-algorithms.com/dynamic_programming/longest_increasing_subsequence.html
-#include "ft_printf.h"
-#include "push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lis.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/06 16:41:31 by yasmine.aichi     #+#    #+#             */
+/*   Updated: 2026/03/06 17:08:22 by yasmine.aichi    ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "push_swap.h"
 
 int	*get_lis(int *arr, int n, size_t *len_lis, size_t *best_pos)
 {
@@ -30,9 +35,9 @@ int	*get_lis(int *arr, int n, size_t *len_lis, size_t *best_pos)
 
 size_t	add_lis_to_nodes(t_stack *stk, size_t *best_pos)
 {
-	int *arr;
-	int *lis;
-	size_t len;
+	int		*arr;
+	int		*lis;
+	size_t	len;
 
 	if (!stk || stk->length < 2 || !stk->head)
 		return (0);

@@ -1,6 +1,15 @@
-// https://www.youtube.com/watch?v=cjWnW0hdF1Y
-// https://cp-algorithms.com/dynamic_programming/longest_increasing_subsequence.html
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lis_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/06 16:42:03 by yasmine.aichi     #+#    #+#             */
+/*   Updated: 2026/03/06 16:42:25 by yasmine.aichi    ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	is_in_lis(int val, int *arr, size_t len)

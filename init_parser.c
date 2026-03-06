@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 13:41:38 by mberraho          #+#    #+#             */
-/*   Updated: 2026/03/06 13:48:26 by yasmine.aichi    ###   ########.fr       */
+/*   Updated: 2026/03/06 17:08:22 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_output_parsing	*init_output_parser(void)
 	output->stack_a = stk;
 	return (output);
 }
+
 void	clear_output(t_output_parsing **out)
 {
 	if (!out)

@@ -14,10 +14,10 @@
 # define PUSH_SWAP_H
 # include <stdio.h>
 # include <unistd.h>
-// a remplacer une fois les pb de valgrind sur le custom printf seront regles
 # include <stdlib.h>
 # include "ft_stack.h"
 # include "ft_parser.h"
+# include "ft_bench_strat.h"
 # include "ft_algo.h"
 # include "ft_printf.h"
 

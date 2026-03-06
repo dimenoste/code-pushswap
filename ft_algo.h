@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 18:10:39 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/06 13:59:19 by yasmine.aichi    ###   ########.fr       */
+/*   Updated: 2026/03/06 16:40:57 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct s_cost
 }				t_cost;
 
 // signature des algos de sort
-typedef void	(*run_algo)(t_stack *a, t_stack *b, t_op_list *ops);
-typedef void	(*rotate_f)(t_stack *stack, t_op_list *ops);
+typedef void	(*t_run_algo)(t_stack *a, t_stack *b, t_op_list *ops);
+typedef void	(*t_rotate_f)(t_stack *stack, t_op_list *ops);
 // === indexing.c ===
 void			assign_indices(t_stack *stk);
 // === disorder.c ===
@@ -54,20 +54,6 @@ void			set_cost_directions(t_cost *c, t_stack *a, t_stack *b);
 int				total_cost(t_cost *c);
 int				abs_val(int n);
 
-//== radix.x ==
-
-void			slow_radix_sort(t_stack *a, t_stack *b, t_op_list *out,
-					int max_bits);
-void			radix_sort(t_stack *a, t_stack *b, t_op_list *out,
-					int max_bits);
-int				find_max_bit(unsigned long value);
-void			radix_sort_algo(t_stack *a, t_stack *b, t_op_list *ops);
-
-// === bench_print.c  && main_strategy.c===
-void			display_bench(t_op_list *ops, char *strategy, float disorder);
-void			print_bench_ops(t_op_list *ops);
-
-// === array_utils.c ===
 int				*init_array(int *arr, int len, int val);
 void			print_array(int *arr, int len);
 
@@ -76,8 +62,10 @@ void			bubble(int *arr, int len);
 void			swap_array(int *a, int *b);
 int				*copy_values(t_stack *stk);
 
-// === lis_helpers.c ===
+// === lis_algo_helpers.c ===
 int				*lis(int *arr, int len_arr, int *len_lis);
+t_cost			find_cheapest_non_lis(t_stack *a, t_stack *b);
+size_t			find_best_lis(t_stack *stk);
 
 // === lis_utils.c ===
 int				is_in_lis(int val, int *arr, size_t len);

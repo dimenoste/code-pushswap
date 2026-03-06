@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 22:09:09 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/01 16:15:48 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/06 16:40:57 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ size_t	find_max_pos(t_stack *stk)
 	}
 	return (max_pos);
 }
+
 /*
 ** find_insert_pos_b
 **
@@ -103,6 +104,7 @@ size_t	find_insert_pos_b(t_stack *b, size_t index)
 	}
 	return (max_pos);
 }
+
 // pareil
 static size_t	find_insert_pos_a(t_stack *a, size_t index)
 {
@@ -127,7 +129,6 @@ static size_t	find_insert_pos_a(t_stack *a, size_t index)
 	}
 	return (min_pos);
 }
-
 
 void	push_all_to_a(t_stack *a, t_stack *b, t_op_list *ops)
 {

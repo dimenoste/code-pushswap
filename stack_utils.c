@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:39:32 by mberraho          #+#    #+#             */
-/*   Updated: 2026/03/05 16:17:18 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:11:26 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_stack(t_stack *stack, const char *name)
 	{
 		printf("%d", current->value);
 		if (i < (stack->length - 1))
-			printf(" → ");
+			write(1, " → ", 1);
 		current = current->next;
 		i++;
 	}
@@ -53,7 +53,7 @@ void	print_index_stack(t_stack *stack, const char *name)
 	{
 		printf("%zu", current->index);
 		if (i < stack->length - 1)
-			printf(" → ");
+			write(1, " → ", 1);
 		current = current->next;
 		i++;
 	}
@@ -77,7 +77,7 @@ void	print_lis_stack(t_stack *stack, const char *name, size_t nb_lis)
 	{
 		printf("%d", current->is_lis);
 		if (i < stack->length - 1)
-			printf(" → ");
+			write(1, " → ", 1);
 		current = current->next;
 		i++;
 	}

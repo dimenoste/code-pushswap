@@ -1,9 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   simple.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/06 16:40:30 by yasmine.aichi     #+#    #+#             */
+/*   Updated: 2026/03/06 16:41:55 by yasmine.aichi    ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-
-#include "ft_algo.h"
-#include "ft_stack.h"
 #include "push_swap.h"
-
 
 static void	push_all_to_b(t_stack *a, t_stack *b, t_op_list *ops)
 {

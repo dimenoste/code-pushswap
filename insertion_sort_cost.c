@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 22:59:23 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/05 21:46:29 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:09:10 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	set_cost_directions(t_cost *c, t_stack *a, t_stack *b)
 	else
 		c->cost_b = -((int)(b->length - c->pos_b));
 }
+
 // helper func pour verifier jusement si n est positif ou negatif
 int	abs_val(int n)
 {
@@ -41,7 +42,6 @@ int	abs_val(int n)
 		return (-n);
 	return (n);
 }
-
 /*
  si les deux négatifs (rotate backward) → on va utiliser rrr
 **   même logique, coût = max(ca, cb)
@@ -52,6 +52,7 @@ int	abs_val(int n)
 **   si ca <= cb : on garde cb (multiplié par 1), ca devient 0
 **   une seule valeur survit → c'est le maximum ! ^^
 */
+
 int	total_cost(t_cost *c)
 {
 	int	ca;

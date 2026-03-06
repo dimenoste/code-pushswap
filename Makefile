@@ -6,7 +6,7 @@
 #    By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 09:12:00 by yasmine.aic       #+#    #+#              #
-#    Updated: 2026/03/06 13:51:29 by yasmine.aichi    ###   ########.fr        #
+#    Updated: 2026/03/06 17:33:04 by yasmine.aichi    ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,11 +74,11 @@ SORT_SRCS = insertion_sort.c \
 			insertion_sort_utils.c \
 			insertion_sort_helpers.c \
             insertion_sort_cost.c \
-			simple.c \
-			radix.c \
-			bench_print.c
+			simple.c
 
-STRAT_SRCS = strategy.c
+STRAT_SRCS = strategy.c \
+			 bench_print.c \
+			 bench_print_utils.c
 
 PRINTF_SRCS = ft_printf.c \
 			ft_putnbr.c \
@@ -89,6 +89,7 @@ PRINTF_SRCS = ft_printf.c \
 			ft_printf.h
 #*----
 HEADER = push_swap.h
+HEADER_BENCH = ft_bench_strat.h
 MAIN_PUSH_SWAP   = main_strategy.c
 MAIN_LIS_TEST   = test_lis.c
 MAIN_OP_TEST     = test_operations.c
@@ -97,12 +98,12 @@ MAIN_ISORT_TEST  = test_isort.c
 MAIN_STRATEGY  = main_strategy.c
 
 # Sources pour chaque executable
-SRCS_PUSH_SWAP   =   $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(DISORDER_SRCS) $(LIS_SRCS)  $(SORT_SRCS) $(STRAT_SRCS) $(MAIN_STRATEGY)
+SRCS_PUSH_SWAP   =   $(HEADER)  $(HEADER_BENCH) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(DISORDER_SRCS) $(LIS_SRCS)  $(SORT_SRCS) $(STRAT_SRCS) $(MAIN_STRATEGY)
 SRCS_OP_TEST     = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(MAIN_OP_TEST)
 SRCS_PARSER_TEST = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PARSER_TEST)
 SRCS_LIS_TEST = $(HEADER) $(PARSER_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(SORT_SRCS) $(LIS_SRCS) $(MAIN_LIS_TEST)
 SRCS_ISORT_TEST  = $(HEADER) $(PRINTF_SRCS) $(PARSER_SRCS) $(STACK_SRCS) $(OPS_SRCS)  $(DISORDER_SRCS) $(LIS_SRCS)  $(SORT_SRCS) $(STRAT_SRCS) $(MAIN_ISORT_TEST)
-SRCS_MAIN_STRATEGY = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(DISORDER_SRCS) $(LIS_SRCS)  $(SORT_SRCS) $(STRAT_SRCS) $(MAIN_STRATEGY)
+SRCS_MAIN_STRATEGY = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(DISORDER_SRCS) $(LIS_SRCS) $(SORT_SRCS) $(STRAT_SRCS) $(MAIN_STRATEGY)
 
 
 
@@ -244,7 +245,7 @@ norm:
 
 help:
 	@echo -e ${YELLOW} Targets disponibles :${NC}
-	@echo "  make            - Build push_swap (quand main.c existera)"
+	@echo "  make            - Build push_swap "
 	@echo "  make test_ops   - Compile et lance les tests operations"
 	@echo "  make test_parser   - Compile et lance les tests du parser"
 	@echo "  make test_isort - Compile et lance les tests insertion sort"

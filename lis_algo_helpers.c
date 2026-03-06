@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lis_algo_helpers.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/06 16:38:39 by yasmine.aichi     #+#    #+#             */
+/*   Updated: 2026/03/06 17:07:19 by yasmine.aichi    ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_cost	find_cheapest_non_lis(t_stack *a, t_stack *b)
@@ -48,17 +60,27 @@ static size_t	eval_rot(int *arr, int n, int start)
 	return (len);
 }
 
-size_t	find_best_lis(t_stack *stk)
+static int	*init_find_best_lis(t_stack *stk)
 {
-	int		*arr;
-	size_t	best_len;
-	size_t	best_pos;
-	size_t	i;
-	size_t	cur;
+	int	*arr;
 
 	if (!stk || stk->length < 2 || !stk->head)
-		return (0);
+		return (NULL);
 	arr = copy_values(stk);
+	if (!arr)
+		return (NULL);
+	return (arr);
+}
+
+size_t	find_best_lis(t_stack *stk)
+{
+	size_t	best_len;
+	size_t	i;
+	size_t	cur;
+	size_t	best_pos;
+	int		*arr;
+
+	arr = init_find_best_lis(stk);
 	if (!arr)
 		return (0);
 	best_len = 0;

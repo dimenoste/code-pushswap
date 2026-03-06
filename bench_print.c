@@ -6,43 +6,11 @@
 /*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 18:32:34 by yasmine.aichi     #+#    #+#             */
-/*   Updated: 2026/03/06 13:57:01 by yasmine.aichi    ###   ########.fr       */
+/*   Updated: 2026/03/06 17:37:27 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	write_int_fd(int fd, int n)
-{
-	char	c;
-
-	if (n < 0)
-	{
-		write(fd, "-", 1);
-		if (n == -2147483648)
-		{
-			write(fd, "2147483648", 10);
-			return ;
-		}
-		n = -n;
-	}
-	if (n >= 10)
-		write_int_fd(fd, n / 10);
-	c = (n % 10) + '0';
-	write(fd, &c, 1);
-}
-
-static void	write_disorder_fd(int fd, float disorder)
-{
-	int	percent;
-
-	percent = (int)(disorder * 10000);
-	write_int_fd(fd, percent / 100);
-	write(fd, ".", 1);
-	if ((percent % 100) < 10)
-		write(fd, "0", 1);
-	write_int_fd(fd, percent % 100);
-}
 
 static void	bench_strategy_info(char *strat)
 {
