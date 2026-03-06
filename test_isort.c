@@ -429,22 +429,22 @@ int	main(void)
 	// test_already_sorted();
 	// test_sort_small();
 	// test_visual_sort();
-	// test_basic_cases(lis_insertion_algo);
-	// test_100_random(lis_insertion_algo);
+	// test_basic_cases(simple_sort);
+	test_100_random(simple_sort);
 	test_500_random(simple_sort);
 	test_10_random(simple_sort);
 
-		// printf("==================================================\n");
-	// printf("       MEDIUM SORT - Test Suite                 \n");
-	// printf("       LIS-optimized with rr/rrr                 \n");
-	// printf("==================================================\n");
+		printf("==================================================\n");
+	printf("       MEDIUM SORT - Test Suite                 \n");
+	printf("       LIS-optimized with rr/rrr                 \n");
+	printf("==================================================\n");
 	// printf("%s\n", NC);
 	// test_op_list_output();
 	// test_already_sorted();
 	// test_sort_small();
 	// test_visual_sort();
 	// test_basic_cases(lis_insertion_algo);
-	// test_100_random(lis_insertion_algo);
+	test_100_random(lis_insertion_algo);
 	test_500_random(lis_insertion_algo);
 	test_10_random(lis_insertion_algo);
 
