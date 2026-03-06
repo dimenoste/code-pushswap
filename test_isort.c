@@ -407,10 +407,10 @@ int	main(void)
 {
 	srand((unsigned int)(time(NULL) ^ getpid()));
 	printf("%s", BLUE);
-	// printf("==================================================\n");
-	// printf("       INSERTION SORT - Test Suite                 \n");
-	// printf("       Cost-optimized with rr/rrr                 \n");
-	// printf("==================================================\n");
+	printf("==================================================\n");
+	printf("       INSERTION SORT - Test Suite                 \n");
+	printf("       Cost-optimized with rr/rrr                 \n");
+	printf("==================================================\n");
 	// printf("%s\n", NC);
 	// test_op_list_output();
 	// test_already_sorted();
@@ -420,7 +420,21 @@ int	main(void)
 	 test_10_random(insertion_sort);
 	 test_100_random(insertion_sort);
 	 test_500_random(insertion_sort);
-	// printf("==================================================\n");
+	printf("==================================================\n");
+	printf("       SIMPLE SORT - Test Suite                 \n");
+	printf("       								             \n");
+	printf("==================================================\n");
+	// printf("%s\n", NC);
+	// test_op_list_output();
+	// test_already_sorted();
+	// test_sort_small();
+	// test_visual_sort();
+	// test_basic_cases(lis_insertion_algo);
+	// test_100_random(lis_insertion_algo);
+	test_500_random(simple_sort);
+	test_10_random(simple_sort);
+
+		// printf("==================================================\n");
 	// printf("       MEDIUM SORT - Test Suite                 \n");
 	// printf("       LIS-optimized with rr/rrr                 \n");
 	// printf("==================================================\n");

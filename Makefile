@@ -74,6 +74,7 @@ SORT_SRCS = insertion_sort.c \
 			insertion_sort_utils.c \
 			insertion_sort_helpers.c \
             insertion_sort_cost.c \
+			simple.c \
 			radix.c \
 			bench_print.c
 
@@ -98,7 +99,7 @@ MAIN_STRATEGY  = main_strategy.c
 # Sources pour chaque executable
 SRCS_PUSH_SWAP   =   $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(DISORDER_SRCS) $(LIS_SRCS)  $(SORT_SRCS) $(STRAT_SRCS) $(MAIN_STRATEGY)
 SRCS_OP_TEST     = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(MAIN_OP_TEST)
-SRCS_PARSER_TEST = $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PARSER_TEST)
+SRCS_PARSER_TEST = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(MAIN_PARSER_TEST)
 SRCS_LIS_TEST = $(HEADER) $(PARSER_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(DISORDER_SRCS) $(SORT_SRCS) $(LIS_SRCS) $(MAIN_LIS_TEST)
 SRCS_ISORT_TEST  = $(HEADER) $(PRINTF_SRCS) $(PARSER_SRCS) $(STACK_SRCS) $(OPS_SRCS)  $(DISORDER_SRCS) $(LIS_SRCS)  $(SORT_SRCS) $(STRAT_SRCS) $(MAIN_ISORT_TEST)
 SRCS_MAIN_STRATEGY = $(HEADER) $(PRINTF_SRCS) $(STACK_SRCS) $(OPS_SRCS) $(PARSER_SRCS) $(DISORDER_SRCS) $(LIS_SRCS)  $(SORT_SRCS) $(STRAT_SRCS) $(MAIN_STRATEGY)
@@ -134,7 +135,7 @@ all: $(NAME)
 # 	@echo "$(GREEN)✓ $(NAME) compile !$(NC)"
 $(NAME): $(OBJS_PUSH_SWAP)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS_PUSH_SWAP) -g -o $(NAME)
-	@echo -e ${RED}main.c pas encore implemente. Utilise 'make test_ops' ou 'make test_parser'${NC}
+	@echo -e ${GREEN}✓ $(NAME) compile !${NC}
 
 # --- Compilation du test des operations ---
 $(NAME_OP_TEST): $(OBJS_OP_TEST)
@@ -214,7 +215,12 @@ main_strategy : $(NAME_MAIN_STRATEGY)
 	@echo -e ${GREEN}✓ run algo strategy tests finished${NC}
 
 # Valgrind sur le test des operations
-valgrind: $(NAME_OP_TEST)
+valgrind: $(NAME)
+	@echo -e ${YELLOW}✓ Valgrind en cours...${NC}
+	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(NAME)
+
+# Valgrind sur le test des operations
+valgrind_ops: $(NAME_OP_TEST)
 	@echo -e ${YELLOW}✓ Valgrind en cours...${NC}
 	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(NAME_OP_TEST)
 
@@ -243,7 +249,8 @@ help:
 	@echo "  make test_parser   - Compile et lance les tests du parser"
 	@echo "  make test_isort - Compile et lance les tests insertion sort"
 	@echo "  make test_lis - Compile et lance de l'algo insertion sort + LIS"
-	@echo "  make valgrind   - Test operations avec valgrind"
+	@echo "  make valgrind   -  main program avec valgrind"
+	@echo "  make valgrind_ops   - Test operations avec valgrind"
 	@echo "  make valgrind_isort - Test insertion sort avec valgrind"
 	@echo "  make valgrind_lis - Test lis sort avec valgrind"
 	@echo "  make clean      - Supprime les .o"

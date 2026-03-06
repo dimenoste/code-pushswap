@@ -41,6 +41,10 @@ void			rotate_to_top(t_stack *stk, size_t pos, t_op_list *ops);
 size_t			find_max_pos(t_stack *stk);
 size_t			find_insert_pos_b(t_stack *b, size_t index);
 void			push_all_to_a(t_stack *a, t_stack *b, t_op_list *ops);
+
+// == simple.c
+void	simple_sort(t_stack *a, t_stack *b, t_op_list *ops);
+
 // === insertion_sort_cost.c ===
 t_cost			find_cheapest(t_stack *a, t_stack *b);
 void			execute_rotations(t_stack *a, t_stack *b, t_op_list *ops,

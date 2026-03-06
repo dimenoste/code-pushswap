@@ -128,6 +128,7 @@ static size_t	find_insert_pos_a(t_stack *a, size_t index)
 	return (min_pos);
 }
 
+
 void	push_all_to_a(t_stack *a, t_stack *b, t_op_list *ops)
 {
 	size_t	target;

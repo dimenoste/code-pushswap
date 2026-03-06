@@ -32,7 +32,7 @@ int	main(int argc, char *argv[])
 {
 	t_output_parsing	*output_parser;
 
-	printf("argc is %d\n", argc);
+	// printf("argc is %d\n", argc);
 	output_parser = run_parser(argc, argv);
 	if (!output_parser)
 		return (0);

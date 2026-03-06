@@ -20,7 +20,7 @@ t_op_list	*run_algo_simple(t_stack *stk)
 
 	b = new_stack(B);
 	ops = new_op_list();
-	insertion_sort(stk, b, ops);
+	simple_sort(stk, b, ops);
 	clear_stack(&b);
 	return (ops);
 }
@@ -32,7 +32,7 @@ t_op_list	*run_algo_medium(t_stack *stk)
 	// algo_medium(stk);
 	b = new_stack(B);
 	ops = new_op_list();
-	insertion_sort(stk, b, ops);
+	lis_insertion_algo(stk, b, ops);
 	clear_stack(&b);
 	return (ops);
 }
@@ -47,7 +47,7 @@ t_op_list	*run_algo_complex(t_stack *stk)
 	// algo_medium(stk);
 	b = new_stack(B);
 	ops = new_op_list();
-	radix_sort_algo(stk, b, ops);
+	insertion_sort(stk, b, ops);
 
 	clear_stack(&b);
 	return (ops);
