@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lis.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
+/*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/06 16:41:31 by yasmine.aichi     #+#    #+#             */
-/*   Updated: 2026/03/06 17:08:22 by yasmine.aichi    ###   ########.fr       */
+/*   Created: 2026/03/06 16:41:31 by yasmine.aic       #+#    #+#             */
+/*   Updated: 2026/03/06 19:04:45 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

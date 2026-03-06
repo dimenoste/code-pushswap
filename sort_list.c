@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
+/*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/06 16:43:17 by yasmine.aichi     #+#    #+#             */
-/*   Updated: 2026/03/06 17:13:11 by yasmine.aichi    ###   ########.fr       */
+/*   Created: 2026/03/06 16:43:17 by yasmine.aic       #+#    #+#             */
+/*   Updated: 2026/03/06 19:04:14 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	swap_temp(int *a, int *b)
 
 void	bubble(int *arr, int len)
 {
-	int	end_idx;
-	int	i;
+	int end_idx;
+	int i;
 
 	if (!arr || len < 2)
 	{
@@ -45,29 +45,3 @@ void	bubble(int *arr, int len)
 		end_idx--;
 	}
 }
-
-void	print_array(int *arr, int len)
-{
-	int	i;
-
-	i = 0;
-	myprintf("==============================================\n");
-	while (i < len)
-	{
-		myprintf("number at index %d is %d\n", i, arr[i]);
-		i++;
-	}
-	printf("==============================================\n");
-}
-/*
-insertion_sort_helperst	main(void)
-{
-	int	arr[] = {8, 3, 4, 6, 5,
-		2, 0, 7, 9, 1};
-
-	print_array(arr, 10);
-	bubble(arr, 10);
-	print_array(arr, 10);
-	return (0);
-}
-*/

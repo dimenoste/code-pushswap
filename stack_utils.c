@@ -6,83 +6,11 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:39:32 by mberraho          #+#    #+#             */
-/*   Updated: 2026/03/06 17:11:26 by yasmine.aichi    ###   ########.fr       */
+/*   Updated: 2026/03/06 19:02:51 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stack(t_stack *stack, const char *name)
-{
-	t_node	*current;
-	size_t	i;
-
-	if (is_empty_stack(stack))
-	{
-		printf("%s : empty stack\n", name);
-		return ;
-	}
-	printf("[VALUES of Stack %s, length=%zu]: ", name, stack->length);
-	current = stack->head;
-	i = 0;
-	while (i < stack->length)
-	{
-		printf("%d", current->value);
-		if (i < (stack->length - 1))
-			write(1, " → ", 1);
-		current = current->next;
-		i++;
-	}
-	printf("\n");
-}
-
-void	print_index_stack(t_stack *stack, const char *name)
-{
-	t_node	*current;
-	size_t	i;
-
-	if (is_empty_stack(stack))
-	{
-		printf("empty stack\n");
-		return ;
-	}
-	printf("[INDEX  of Stack %s, length=%zu]: ", name, stack->length);
-	current = stack->head;
-	i = 0;
-	while (i < stack->length)
-	{
-		printf("%zu", current->index);
-		if (i < stack->length - 1)
-			write(1, " → ", 1);
-		current = current->next;
-		i++;
-	}
-	printf("\n");
-}
-
-void	print_lis_stack(t_stack *stack, const char *name, size_t nb_lis)
-{
-	t_node	*current;
-	size_t	i;
-
-	if (is_empty_stack(stack))
-	{
-		printf("empty stack\n");
-		return ;
-	}
-	printf("[IS_LIS of Stack %s, length=%zu]: ", name, nb_lis);
-	current = stack->head;
-	i = 0;
-	while (i < stack->length)
-	{
-		printf("%d", current->is_lis);
-		if (i < stack->length - 1)
-			write(1, " → ", 1);
-		current = current->next;
-		i++;
-	}
-	printf("\n");
-}
 
 /*
 	add node to stack and return 1 or 0

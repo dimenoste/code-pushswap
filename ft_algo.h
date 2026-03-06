@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 18:10:39 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/06 16:40:57 by yasmine.aichi    ###   ########.fr       */
+/*   Updated: 2026/03/06 19:03:47 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int				total_cost(t_cost *c);
 int				abs_val(int n);
 
 int				*init_array(int *arr, int len, int val);
-void			print_array(int *arr, int len);
 
 // === sort_array.c ===
 void			bubble(int *arr, int len);
@@ -84,7 +83,6 @@ size_t			add_lis_to_nodes(t_stack *stk, size_t *best_pos);
 // size_t			find_min_ptr_pos(t_stack *stk, t_node **ptr_min);
 // int				is_sorted_circular(t_stack *stk);
 void			algo_lis(void);
-void			print_array(int *arr, int len);
 int				*copy_values(t_stack *stk);
 t_cost			find_cheapest_non_lis(t_stack *a, t_stack *b);
 int				*get_lis(int *arr, int n, size_t *len_lis, size_t *best_pos);
