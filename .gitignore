@@ -1,3 +1,4 @@
+.gitignore
 obj
 parser
 operations
@@ -15,3 +16,4 @@ strategy
 lis
 args.txt
 testarg
+checker_os
