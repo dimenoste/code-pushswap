@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 13:41:38 by mberraho          #+#    #+#             */
-/*   Updated: 2026/02/16 18:13:47 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/06 13:48:26 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,32 @@ void	init_parser_arg(t_states *mystates, t_context *ptr_parser, char *s,
 	ptr_parser->start_number = NULL;
 	ptr_parser->option_found = NULL;
 	ptr_parser->stack_a = stk;
+}
+
+t_output_parsing	*init_output_parser(void)
+{
+	t_output_parsing	*output;
+	t_stack				*stk;
+
+	output = malloc(sizeof(t_output_parsing));
+	if (!output)
+		return (NULL);
+	stk = new_stack(A);
+	output->name_state = InInvalid;
+	output->option_found = NULL;
+	output->bench_found = NULL;
+	output->stack_a = stk;
+	return (output);
+}
+void	clear_output(t_output_parsing **out)
+{
+	if (!out)
+		return ;
+	else if (*out)
+	{
+		clear_stack(&((*out)->stack_a));
+		free(*out);
+		return ;
+	}
+	return ;
 }

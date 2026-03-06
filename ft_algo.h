@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 18:10:39 by yasmine.aic       #+#    #+#             */
-/*   Updated: 2026/03/05 21:44:15 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/06 13:59:19 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_cost
 
 // signature des algos de sort
 typedef void	(*run_algo)(t_stack *a, t_stack *b, t_op_list *ops);
+typedef void	(*rotate_f)(t_stack *stack, t_op_list *ops);
 // === indexing.c ===
 void			assign_indices(t_stack *stk);
 // === disorder.c ===
@@ -43,7 +44,7 @@ size_t			find_insert_pos_b(t_stack *b, size_t index);
 void			push_all_to_a(t_stack *a, t_stack *b, t_op_list *ops);
 
 // == simple.c
-void	simple_sort(t_stack *a, t_stack *b, t_op_list *ops);
+void			simple_sort(t_stack *a, t_stack *b, t_op_list *ops);
 
 // === insertion_sort_cost.c ===
 t_cost			find_cheapest(t_stack *a, t_stack *b);
@@ -62,11 +63,9 @@ void			radix_sort(t_stack *a, t_stack *b, t_op_list *out,
 int				find_max_bit(unsigned long value);
 void			radix_sort_algo(t_stack *a, t_stack *b, t_op_list *ops);
 
-
-// === bench_print.c ===
+// === bench_print.c  && main_strategy.c===
 void			display_bench(t_op_list *ops, char *strategy, float disorder);
 void			print_bench_ops(t_op_list *ops);
-
 
 // === array_utils.c ===
 int				*init_array(int *arr, int len, int val);
@@ -80,20 +79,18 @@ int				*copy_values(t_stack *stk);
 // === lis_helpers.c ===
 int				*lis(int *arr, int len_arr, int *len_lis);
 
-
 // === lis_utils.c ===
-int	is_in_lis(int val, int *arr, size_t len);
-void	mark_lis_nodes(t_stack *stk, int *lis, size_t len);
-void	fill_dp(int *arr, int n, int *d, int *p);
-int	find_best_index(int *d, int n);
-int	*rebuild_lis(int *arr, int *p, int pos, int len);
+int				is_in_lis(int val, int *arr, size_t len);
+void			mark_lis_nodes(t_stack *stk, int *lis, size_t len);
+void			fill_dp(int *arr, int n, int *d, int *p);
+int				find_best_index(int *d, int n);
+int				*rebuild_lis(int *arr, int *p, int pos, int len);
 
 // === lis.c ===
-int	*get_lis(int *arr, int n, size_t *len_lis, size_t *best_pos);
-size_t	add_lis_to_nodes(t_stack *stk, size_t *best_pos);
+int				*get_lis(int *arr, int n, size_t *len_lis, size_t *best_pos);
+size_t			add_lis_to_nodes(t_stack *stk, size_t *best_pos);
 
 //  === medium_algo.c ===
-typedef void	(*rotate_f)(t_stack *stack, t_op_list *ops);
 void			add_index_node(t_stack *stk);
 size_t			add_lis_to_nodes(t_stack *stk, size_t *best_pos);
 // size_t			find_min_ptr_pos(t_stack *stk, t_node **ptr_min);

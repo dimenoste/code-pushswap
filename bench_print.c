@@ -6,29 +6,11 @@
 /*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 18:32:34 by yasmine.aichi     #+#    #+#             */
-/*   Updated: 2026/03/04 19:14:26 by yasmine.aichi    ###   ########.fr       */
+/*   Updated: 2026/03/06 13:57:01 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_algo.h"
-#include "ft_stack.h"
 #include "push_swap.h"
-
-static size_t	count_op(t_op_list *ops, t_op_type type)
-{
-	size_t	count;
-	size_t	i;
-
-	count = 0;
-	i = 0;
-	while (i < ops->count)
-	{
-		if (ops->operations[i] == type)
-			count++;
-		i++;
-	}
-	return (count);
-}
 
 static void	write_int_fd(int fd, int n)
 {
@@ -102,6 +84,7 @@ void	print_bench_ops(t_op_list *ops)
 	write_int_fd(2, (int)count_op(ops, OP_RRR));
 	write(2, "\n", 1);
 }
+
 void	display_bench(t_op_list *ops, char *strategy, float disorder)
 {
 	if (!ops)

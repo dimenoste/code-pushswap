@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   array_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/06 13:52:26 by yasmine.aichi     #+#    #+#             */
+/*   Updated: 2026/03/06 13:52:42 by yasmine.aichi    ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include "push_swap.h"
-#include <stdlib.h>
-#include <unistd.h>
 
 void	print_array(int *arr, int len)
 {

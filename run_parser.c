@@ -6,29 +6,11 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 18:24:59 by mberraho          #+#    #+#             */
-/*   Updated: 2026/03/03 15:49:48 by yasmine.aichi    ###   ########.fr       */
+/*   Updated: 2026/03/06 13:49:51 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_output_parsing	*init_output_parser(void)
-{
-	t_output_parsing	*output;
-	t_stack				*stk;
-
-	output = malloc(sizeof(t_output_parsing));
-	if (!output)
-		return (NULL);
-	stk = new_stack(A);
-	output->name_state = InInvalid;
-	output->option_found = NULL;
-	output->bench_found = NULL;
-	output->stack_a = stk;
-	return (output);
-}
-
-
 
 void	update_output_parser(t_context *ptr_parser, t_output_parsing *output)
 {
@@ -88,26 +70,12 @@ int	validate_args(int argc, char *argv[], t_output_parsing *output)
 	return (validate_args_inner_loop(i, pvars, argc, argv));
 }
 
-
-void	clear_output(t_output_parsing **out)
-{
-	if (!out)
-		return ;
-	else if (*out)
-	{
-		clear_stack(&((*out)->stack_a));
-		free(*out);
-		return ;
-	}
-	return ;
-}
-
 int	validate_output(int argc, char *argv[], t_output_parsing *output)
 {
 	int	cond1;
 	int	cond2;
 	int	cond3;
-	int is_args_valid;
+	int	is_args_valid;
 
 	is_args_valid = validate_args(argc, argv, output);
 	cond1 = (is_args_valid != 1);
@@ -136,4 +104,3 @@ t_output_parsing	*run_parser(int argc, char *argv[])
 	}
 	return (output);
 }
-

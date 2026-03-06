@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 13:36:33 by mberraho          #+#    #+#             */
-/*   Updated: 2026/02/16 19:37:43 by mberraho         ###   ########.fr       */
+/*   Updated: 2026/03/06 13:49:10 by yasmine.aichi    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,11 @@ t_number	ft_patol(char *s)
 int	ft_strcmp_space(char *s1, char *s2)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	if (!s1 || !s2 || !*s1 || !*s2)
 		return (0);
-	//while (s2[i] != '\0' && s1[i] != '\0')
 	j = ft_strlen(s2);
 	while (s1[i] != '\0' || j != 0)
 	{

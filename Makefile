@@ -6,7 +6,7 @@
 #    By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 09:12:00 by yasmine.aic       #+#    #+#              #
-#    Updated: 2026/03/05 21:48:34 by mberraho         ###   ########.fr        #
+#    Updated: 2026/03/06 13:51:29 by yasmine.aichi    ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ OPS_SRCS = operations_swap.c \
 
 # fichiers sources des algos
 LIS_SRCS = medium_algo.c \
-			_sort_array.c \
+			sort_array.c \
 			lis.c \
 			lis_utils.c \
 			lis_algo_helpers.c

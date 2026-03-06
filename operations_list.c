@@ -47,7 +47,6 @@ void	add_operation(t_op_list *list, t_op_type op)
 		}
 		free(list->operations);
 		list->operations = new_ops;
-		
 	}
 	list->operations[list->count] = op;
 	list->count++;

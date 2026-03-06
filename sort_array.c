@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_array.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/06 13:50:52 by yasmine.aichi     #+#    #+#             */
+/*   Updated: 2026/03/06 13:52:42 by yasmine.aichi    ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	swap_array(int *a, int *b)
@@ -44,6 +56,7 @@ size_t	find_index(int val, int *arr, int len)
 	}
 	return (i);
 }
+
 void	add_index_node(t_stack *stk)
 {
 	t_node	*ptr_node;
@@ -55,7 +68,6 @@ void	add_index_node(t_stack *stk)
 	if (!stk || stk->length < 2)
 		return ;
 	arr_sorted = copy_values(stk);
-	// print_array(arr_sorted, stk->length);
 	bubble(arr_sorted, stk->length);
 	ptr_node = stk->head;
 	while (i < stk->length)

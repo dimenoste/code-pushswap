@@ -1,109 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   medium_algo.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yasmine.aichi <yasmine.aichi@learner.42.t  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/06 13:36:13 by yasmine.aichi     #+#    #+#             */
+/*   Updated: 2026/03/06 13:37:06 by yasmine.aichi    ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-
-// size_t	find_min_ptr_pos(t_stack *stk, t_node **ptr_min)
-// {
-// 	size_t	i;
-// 	size_t	j;
-// 	t_node	*ptr_node;
-// 	int		min;
-
-// 	if (stk->length == 0)
-// 		return (0);
-// 	i = 1;
-// 	j = i;
-// 	ptr_node = stk->head;
-// 	*ptr_min = ptr_node;
-// 	min = ptr_node->value;
-// 	while (i <= stk->length)
-// 	{
-// 		if (ptr_node->value < min)
-// 		{
-// 			min = ptr_node->value;
-// 			*ptr_min = ptr_node;
-// 			j = i;
-// 		}
-// 		ptr_node = ptr_node->next;
-// 		i++;
-// 	}
-// 	return (j);
-// }
-
-// size_t	get_max_index(t_stack *stk)
-// {
-// 	size_t	i;
-// 	t_node	*ptr_node;
-// 	size_t	max;
-
-// 	if (stk->length == 0)
-// 		return (0);
-// 	i = 0;
-// 	ptr_node = stk->head;
-// 	max = ptr_node->index;
-// 	while (i < stk->length)
-// 	{
-// 		if (ptr_node->index > max)
-// 			max = ptr_node->index;
-// 		ptr_node = ptr_node->next;
-// 		i++;
-// 	}
-// 	return (max);
-// }
-
-// int	is_sorted_circular(t_stack *stk)
-// {
-// 	int		is_sorted;
-// 	t_node	*ptr_min;
-// 	t_node	*head_orig;
-
-// 	is_sorted = 0;
-// 	head_orig = stk->head;
-// 	ptr_min = stk->head;
-// 	find_min_ptr_pos(stk, &ptr_min);
-// 	stk->head = ptr_min;
-// 	is_sorted = is_in_order(stk);
-// 	stk->head = head_orig;
-// 	return (is_sorted);
-// }
-
-// void	rotate_until_sorted(t_stack *stk, t_op_list *ops)
-// {
-// 	size_t		pos_min;
-// 	t_node		*ptr_min;
-// 	rotate_f	rot;
-// 	size_t		nb_rotate;
-
-// 	if (!stk || !stk->head || stk->length < 2 || !is_sorted_circular(stk))
-// 	{
-// 		return ;
-// 	}
-// 	ptr_min = stk->head;
-// 	pos_min = find_min_ptr_pos(stk, &ptr_min);
-// 	if (pos_min == 0)
-// 	{
-// 		return ;
-// 	}
-// 	nb_rotate = 0;
-// 	if (pos_min <= stk->length / 2)
-// 	{
-// 		rot = &rotate;
-// 		nb_rotate = pos_min - 1;
-// 	}
-// 	else
-// 	{
-// 		rot = &reverse_rotate;
-// 		nb_rotate = stk->length - pos_min + 1;
-// 	}
-// 	while (nb_rotate > 0)
-// 	{
-// 		rot(stk, ops);
-// 		nb_rotate--;
-// 	}
-// 	return ;
-// }
-
-
-
 
 static int	handle_small_cases(t_stack *a, t_op_list *ops)
 {
