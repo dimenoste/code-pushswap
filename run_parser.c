@@ -6,7 +6,7 @@
 /*   By: mberraho <mehdi.berraho@learner.42.tech    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 18:24:59 by mberraho          #+#    #+#             */
-/*   Updated: 2026/03/06 13:49:51 by yasmine.aichi    ###   ########.fr       */
+/*   Updated: 2026/03/06 18:03:30 by mberraho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	validate_args_inner_loop(int i, t_vars_pars_loop *vars, int argc,
 			update_output_parser(vars->ptr_parser, vars->output);
 			if (vars->output->name_state == InInvalid)
 			{
-				write(1, "Error\n", 6);
+				write(2, "Error\n", 6);
 				clear_stack(&(vars->output->stack_a));
 				free(vars->ptr_parser);
 				free_mystates(vars->mystates);
