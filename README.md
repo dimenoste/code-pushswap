@@ -450,10 +450,13 @@ Measured results:
 
 | Algorithm        | n=100 avg | n=500 avg |
 | ---------------- | --------- | --------- |
-| Greedy insertion | ~566      | ~4127     |
-| LIS insertion    | ~632      | ~5613     |
-| Simple insertion | ~1423     | ~27870    |
+| Greedy insertion | ~566      | ~4256     |
+| LIS insertion    | ~632      | ~4764     |
+| Simple insertion | ~1423     | ~22492    |
 
+Simple Mode | Average Moves: 22492.87 | Average Time: 0.0044s
+Medium Mode | Average Moves: 4764.24 | Average Time: 0.1505s
+Complex Mode | Average Moves: 4256.99 | Average Time: 0.0777s
 The greedy algorithm consistently provides the best results for large inputs.
 
 ---
