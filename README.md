@@ -26,9 +26,9 @@ This project emphasizes:
 - robust input parsing.
 
 ---
-# Instructions
+## Instructions
 
-## Compilation
+### Compilation
 
 ```bash
 make
@@ -50,7 +50,7 @@ make re
 
 ---
 
-## Execution
+### Execution
 
 Example usage:
 
@@ -61,9 +61,8 @@ Example usage:
 Output:
 
 ```
-pb
 sa
-pa
+rra
 ```
 
 The output is a **sequence of operations** that sorts the input.
@@ -90,9 +89,9 @@ OK
 
 ---
 
-# Allowed Operations
+### Allowed Operations
 
-### Swap
+#### Swap
 
 ```
 sa   swap first two elements of stack A
@@ -100,14 +99,14 @@ sb   swap first two elements of stack B
 ss   sa and sb simultaneously
 ```
 
-### Push
+#### Push
 
 ```
 pa   push top of B onto A
 pb   push top of A onto B
 ```
 
-### Rotate
+#### Rotate
 
 ```
 ra   rotate A upward
@@ -115,7 +114,7 @@ rb   rotate B upward
 rr   ra and rb simultaneously
 ```
 
-### Reverse Rotate
+#### Reverse Rotate
 
 ```
 rra  rotate A downward
@@ -127,7 +126,7 @@ Each operation runs in **O(1)** time because only stack pointers are modified.
 
 ---
 
-# Project Architecture
+## Project Architecture
 
 The project is structured into three major components:
 
@@ -149,9 +148,9 @@ Operation log output
 
 ---
 
-# Global Invariants
+## Global Invariants
 
-## Stack Structure Invariants
+### Stack Structure Invariants
 
 The stack is implemented as a **circular doubly linked list**.
 
@@ -176,7 +175,7 @@ Operations `ra`, `rb`, `rra`, `rrb` only update **head/tail pointers** without c
 
 ---
 
-## Data Invariants
+### Data Invariants
 
 All stack elements follow these rules:
 
@@ -192,18 +191,18 @@ Using indices simplifies comparisons and enables efficient sorting strategies.
 
 ---
 
-## Output Invariants
+### Output Invariants
 
 * Only operations must be written to **stdout**.
 * Every printed operation must correspond to a **real stack modification**.
 
 ---
 
-# Parser Design
+## Parser Design
 
 The parser reads the input using a **finite state machine (FSM)**.
 
-## Input Assumptions
+### Input Assumptions
 
 The parser processes:
 
@@ -224,7 +223,7 @@ A valid number is a **signed base-10 integer within 32-bit limits**.
 
 ---
 
-## Parser States
+### Parser States
 
 ```
 InStart
@@ -251,7 +250,7 @@ Handlers process the character and determine the **next state**.
 
 ---
 
-## Parser Invariants
+### Parser Invariants
 
 * `InInvalid` is **absorbing** (no transition back).
 * `start_number` points to the beginning of the current numeric token.
@@ -272,24 +271,15 @@ exit
 
 ---
 
-# Sorting Algorithms
+## Sorting Algorithms
 
-Notation:
+### Simple Insertion Sort
 
-```
-n = initial number of elements
-L = length of the LIS
-```
-
----
-
-# Simple Insertion Sort
-
-### Idea
+#### Idea
 
 Repeatedly move the **minimum element of A** into B.
 
-### Steps
+#### Steps
 
 1. Assign indices.
 2. Find minimum position in `A`.
@@ -298,7 +288,7 @@ Repeatedly move the **minimum element of A** into B.
 5. Repeat until `A` empty.
 6. Push everything back with `pa`.
 
-### Complexity
+#### Complexity
 
 CPU complexity:
 
@@ -316,29 +306,29 @@ This algorithm serves mainly as a **baseline implementation**.
 
 ---
 
-# LIS-Based Insertion
+### LIS-Based Insertion
 
-### Idea
+#### Idea
 
 Preserve the **Longest Increasing Subsequence (LIS)** inside stack `A`.
 
 Only elements **not belonging to the LIS** are moved to stack `B`.
 
-### Invariants
+#### Invariants
 
 * LIS elements remain in `A`.
 * non-LIS elements move to `B`.
 * `B` remains **circularly descending**.
 * `A` remains **circularly ascending** during reinsertion.
 
-### Steps
+#### Steps
 
 1. Compute LIS and mark nodes.
 2. Push non-LIS elements to `B`.
 3. Reinsert elements into `A` at optimal positions.
 4. Final rotation to place minimum at top.
 
-### Complexity
+#### Complexity
 
 CPU complexity:
 
@@ -356,11 +346,11 @@ Often better than simple insertion because fewer elements are moved.
 
 ---
 
-# Greedy Cost-Based Insertion
+### Greedy Cost-Based Insertion
 
 This is the **main algorithm used in the project**.
 
-### Idea
+#### Idea
 
 At each step:
 
@@ -370,7 +360,7 @@ At each step:
 
 ---
 
-## Cost Computation
+#### Cost Computation
 
 For each element:
 
@@ -394,7 +384,7 @@ rrr
 
 ---
 
-## Algorithm
+### Algorithm on n < 4
 
 1. Handle `n ≤ 3` with direct sorting.
 2. Assign indices.
@@ -413,7 +403,7 @@ pb
 
 ---
 
-## Complexity
+### Complexity
 
 CPU complexity:
 
@@ -437,7 +427,7 @@ for typical random inputs.
 
 ---
 
-# Benchmarks
+## Benchmarks
 
 Typical thresholds used in the 42 evaluation:
 
@@ -446,19 +436,27 @@ Typical thresholds used in the 42 evaluation:
 | 100 numbers | < 700 operations  |
 | 500 numbers | < 5500 operations |
 
-Measured results:
 
-| Algorithm        | n=100 avg | n=500 avg |
-| ---------------- | --------- | --------- |
-| Greedy insertion | ~566      | ~4127     |
-| LIS insertion    | ~632      | ~5613     |
-| Simple insertion | ~1423     | ~27870    |
+### Measured Average Results for n = 500
 
-The greedy algorithm consistently provides the best results for large inputs.
 
----
+| Algorithm  | Average Moves | Average Time (s) |
+|------------|---------------|------------------|
+| Simple     | 22492.87      | 0.0044           |
+| Medium     | 4764.24       | 0.1505           |
+| Complex    | 4256.99       | 0.0777           |
 
-# Reusable Components
+### Measured Results for n = 100
+
+| Algorithm  | Average Moves | Average Time (s) |
+|------------|---------------|------------------|
+| Simple     | 1123.95       | 0.0017           |
+| Medium     | 555.53        | 0.0048           |
+| Complex    | 505.78        | 0.0031           |
+
+
+
+## Reusable Components
 
 Several components are designed to be reusable in other projects:
 
@@ -473,7 +471,7 @@ Several components are designed to be reusable in other projects:
 
 # Resources
 
-## Documentation
+### Documentation
 
 * 42 push_swap subject
 * state machine : https://gameprogrammingpatterns.com/state.html
@@ -481,7 +479,7 @@ https://www.adamtornhill.com/Patterns%20in%20C%202,%20STATE.pdf
 * GeeksforGeeks articles on stack operations
 * LIS : https://cp-algorithms.com/dynamic_programming/longest_increasing_subsequence.html#restoring-the-subsequence
 
-## Concepts Used
+### Concepts Used
 
 * greedy algorithms
 * longest increasing subsequence
