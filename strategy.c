@@ -81,13 +81,19 @@ void	run_strategy(t_output_parsing *output_parser)
 		ops = run_algo_complex(output_parser->stack_a);
 	else if (ft_strcmp_space(strat, "--adaptive") || !strat)
 		ops = run_algo_adaptive(output_parser->stack_a);
-	if (ops)
-	{
-		print_operations(ops);
-	}
+	// if (ops)
+	// 	print_operations(ops);
 	if (output_parser->bench_found)
 	{
-		display_bench(ops, strat, disorder);
+			
+		if (ft_strcmp_space(output_parser->bench_found, "--count-only"))
+		{
+			write_disorder_fd(1, disorder);
+			write(1, "\n", 1);
+			ft_putnbr_zu(ops->count);
+		}
+		else
+			display_bench(ops, strat, disorder);
 	}
 	clear_op_list(&ops);
 }

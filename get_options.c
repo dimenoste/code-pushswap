@@ -37,11 +37,17 @@ char	*get_strat_selector(char *s)
 char	*get_bench_selector(char *s)
 {
 	char	*bench;
+	char	*cc;
 
 	bench = "--bench";
+	cc = "--count-only";
 	if (ft_strcmp_space(s, bench) == 1)
 	{
 		return (bench);
+	}
+	else if (ft_strcmp_space(s, cc) == 1)
+	{
+		return (cc);
 	}
 	return (NULL);
 }

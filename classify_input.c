@@ -29,7 +29,7 @@ void	classify_input(t_context *curr_state, t_states *mystates)
 		return (curr_state->interface->handler_space(curr_state, mystates));
 	else if (input == '-')
 	{
-		if (curr_state->nber_dash == 0)
+		if (curr_state->nber_dash == 0 && curr_state->name_state != InOption)
 			curr_state->addr_first_dash = curr_state->mystring;
 		return (curr_state->interface->handler_dash(curr_state, mystates));
 	}

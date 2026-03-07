@@ -19,9 +19,9 @@ void	digit_when_in_option(t_context *currState, t_states *mystates)
 
 void	dash_when_in_option(t_context *currState, t_states *mystates)
 {
-	if (currState->nber_dash != 2)
-		toin_invalid_state(currState, mystates);
-	else
+	// if (currState->nber_dash != 2)
+	// 	toin_invalid_state(currState, mystates);
+	// else
 		toin_dash_state(currState, mystates);
 }
 
