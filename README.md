@@ -446,18 +446,26 @@ Typical thresholds used in the 42 evaluation:
 | 100 numbers | < 700 operations  |
 | 500 numbers | < 5500 operations |
 
-Measured results:
 
-| Algorithm        | n=100 avg | n=500 avg |
-| ---------------- | --------- | --------- |
-| Greedy insertion | ~566      | ~4256     |
-| LIS insertion    | ~632      | ~4764     |
-| Simple insertion | ~1423     | ~22492    |
 
-Simple Mode | Average Moves: 22492.87 | Average Time: 0.0044s
-Medium Mode | Average Moves: 4764.24 | Average Time: 0.1505s
-Complex Mode | Average Moves: 4256.99 | Average Time: 0.0777s
-The greedy algorithm consistently provides the best results for large inputs.
+## Measured Average Results for n = 500
+
+Data and python simulation script are int he folder `./Perf`
+
+| Algorithm  | Average Moves | Average Time (s) |
+|------------|---------------|------------------|
+| Simple     | 22492.87      | 0.0044           |
+| Medium     | 4764.24       | 0.1505           |
+| Complex    | 4256.99       | 0.0777           |
+
+## Measured Results for n = 100
+
+| Algorithm  | Average Moves | Average Time (s) |
+|------------|---------------|------------------|
+| Simple     | 1123.95       | 0.0017           |
+| Medium     | 555.53        | 0.0048           |
+| Complex    | 505.78        | 0.0031           |
+
 
 ---
 
