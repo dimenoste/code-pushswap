@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	handle_small_cases(t_stack *a, t_op_list *ops)
+int	handle_small_cases(t_stack *a, t_op_list *ops)
 {
 	if (a->length <= 1)
 		return (1);

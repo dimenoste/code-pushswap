@@ -56,18 +56,8 @@ static void	push_cheapest_to_b(t_stack *a, t_stack *b, t_op_list *ops)
 
 void	insertion_sort(t_stack *a, t_stack *b, t_op_list *ops)
 {
-	if (a->length <= 1)
+	if (handle_small_cases(a, ops))
 		return ;
-	if (a->length == 2)
-	{
-		sort_two(a, ops);
-		return ;
-	}
-	if (a->length == 3)
-	{
-		sort_three(a, ops);
-		return ;
-	}
 	assign_indices(a);
 	while (a->length > 3)
 		push_cheapest_to_b(a, b, ops);
