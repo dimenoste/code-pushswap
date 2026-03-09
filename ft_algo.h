@@ -80,7 +80,7 @@ size_t			add_lis_to_nodes(t_stack *stk, size_t *best_pos);
 //  === medium_algo.c ===
 void			add_index_node(t_stack *stk);
 size_t			add_lis_to_nodes(t_stack *stk, size_t *best_pos);
-int	handle_small_cases(t_stack *a, t_op_list *ops);
+int				handle_small_cases(t_stack *a, t_op_list *ops);
 // size_t			find_min_ptr_pos(t_stack *stk, t_node **ptr_min);
 // int				is_sorted_circular(t_stack *stk);
 void			algo_lis(void);
