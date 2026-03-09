@@ -14,6 +14,8 @@
 
 int	handle_small_cases(t_stack *a, t_op_list *ops)
 {
+	if (is_in_order(a))
+		return (1);
 	if (a->length <= 1)
 		return (1);
 	if (a->length == 2)
