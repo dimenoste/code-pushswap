@@ -80,7 +80,7 @@ int	validate_output(int argc, char *argv[], t_output_parsing *output)
 	is_args_valid = validate_args(argc, argv, output);
 	cond1 = (is_args_valid != 1);
 	cond2 = (output->name_state == InInvalid);
-	cond3 = (is_empty_stack(output->stack_a) || is_in_order(output->stack_a));
+	cond3 = (is_empty_stack(output->stack_a));
 	if (cond1 || cond2 || cond3)
 	{
 		return (0);
